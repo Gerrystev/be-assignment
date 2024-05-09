@@ -9,9 +9,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.2.0",
     "@types/node": "^20.12.11",
+    "eslint": "^8.57.0",
+    "globals": "^15.2.0",
     "prisma": "^5.13.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.8.0"
+  },
+  "dependencies": {
+    "env-schema": "^5.2.1",
+    "fastify": "^4.27.0",
+    "fluent-json-schema": "^4.2.1",
+    "pino": "^9.0.0"
   }
 }

@@ -55,3 +55,11 @@ Features:
 - Make sure app functionality works as expected. Run and test it well.
 - Containerized and run the app using Docker.
 - Using `docker-compose` or any automation script to run the app with single command is a plus.
+
+## Setup:
+1. Set your `DATABASE_URL` env variable at `.env`
+2. Run following command to migrate the schema
+   ```
+   npm run db:migrate
+   ``` 
+3.y
