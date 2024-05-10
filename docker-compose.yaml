@@ -36,7 +36,22 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
+  account_manager:
+    image: concreteai-account-manager:latest
+    network_mode: "host"
+    depends_on:
+      db:
+        condition: service_healthy
+      supertokens:
+        condition: service_started
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/concrete_ai
+      - API_DOMAIN=http://localhost:8080
+      - API_PORT=8080
+      - SUPERTOKENS_CORE_URI=http://localhost:3567
+      - SUPERTOKENS_APP_NAME=account_manager
 networks:
   app_network:
     driver: bridge

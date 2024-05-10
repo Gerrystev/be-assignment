@@ -13,28 +13,27 @@ const result = require('dotenv').config({
   path: path.join(__dirname, '..', '..', '.env'),
 })
 
-if (result.error) {
-  throw new Error(result.error)
-}
-
 const supertokensAppName = process.env.SUPERTOKENS_APP_NAME;
 const supertokensCoreUri = process.env.SUPERTOKENS_CORE_URI;
 export const apiDomain = process.env.API_DOMAIN;
 
 export default function loadConfig(): void {
-  envSchema({
-    data: result.parsed,
-    schema: S.object()
-      .prop(
-        'NODE_ENV',
-        S.string().enum(['development', 'testing', 'production']).default("development"),
-      )
-      .prop('API_DOMAIN', S.string().required())
-      .prop('API_PORT', S.string().required())
-      .prop('DATABASE_URL', S.string().required())
-      .prop('SUPERTOKENS_APP_NAME', S.string().required())
-      .prop('SUPERTOKENS_CORE_URI', S.string().required())
-  })
+  if (!result.error) {
+    // If .env not error can parse dotenv file
+    envSchema({
+      data: result.parsed,
+      schema: S.object()
+        .prop(
+          'NODE_ENV',
+          S.string().enum(['development', 'testing', 'production']).default("development"),
+        )
+        .prop('API_DOMAIN', S.string().required())
+        .prop('API_PORT', S.string().required())
+        .prop('DATABASE_URL', S.string().required())
+        .prop('SUPERTOKENS_APP_NAME', S.string().required())
+        .prop('SUPERTOKENS_CORE_URI', S.string().required())
+    })
+  }
 
   supertokens.init({
     framework: "fastify",

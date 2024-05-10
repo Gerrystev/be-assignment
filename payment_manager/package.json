@@ -19,9 +19,9 @@
     "typescript-eslint": "^7.8.0"
   },
   "dependencies": {
-    "env-schema": "^5.2.1",
+    "env-schema": "^4.0.0",
     "fastify": "^4.27.0",
-    "fluent-json-schema": "^4.2.1",
+    "fluent-json-schema": "^3.1.0",
     "pino": "^9.0.0"
   }
 }
