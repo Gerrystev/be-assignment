@@ -32,7 +32,7 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
     })
     const result = transactions.map(o => {
       return {
-        id: o.id,
+        id: o.id.toString(),
         amount: o.amount,
         payment_account_id: o.payment_account_id.toString(),
         status: o.status,
