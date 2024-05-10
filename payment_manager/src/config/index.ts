@@ -13,12 +13,16 @@ const result = require('dotenv').config({
   path: path.join(__dirname, '..', '..', '.env'),
 })
 
+if (process.env.NODE_ENV !== "production" && result.error) {
+  throw new Error(result.error)
+}
+
 const supertokensAppName = process.env.SUPERTOKENS_APP_NAME;
 const supertokensCoreUri = process.env.SUPERTOKENS_CORE_URI;
 export const apiDomain = process.env.API_DOMAIN;
 
 export default function loadConfig(): void {
-  if (!result.error) {
+  if (process.env.NODE_ENV !== "production") {
     // If .env not error can parse dotenv file
     envSchema({
       data: result.parsed,
