@@ -10,5 +10,9 @@ export const ERRORS = {
 }
 
 export function handleServerError(reply: FastifyReply, error: any) {
-  return reply.status(ERROR500.statusCode).send(ERROR500);
+  console.error(error);
+  return reply.status(ERROR500.statusCode).send({
+    code: ERROR500.statusCode,
+    message: error.message
+  });
 }

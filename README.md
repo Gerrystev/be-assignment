@@ -62,4 +62,8 @@ Features:
    ```
    npm run db:migrate
    ``` 
-3.y
+3. Run docker compose file
+   ```
+   docker compose up
+   ```
+4. Create `supertokens` and `concrete_ai` databases in postgresql `db` container

@@ -10,7 +10,10 @@ export const loginSchema = {
 }
 
 export const signupSchema = {
-    body: S.object(),
+    body: S.object()
+        .prop('email', S.string().required())
+        .prop('password', S.string().minLength(8).required())
+        .prop('fullname', S.string().required()),
     queryString: S.object(),
     params: S.object(),
     headers: S.object(),

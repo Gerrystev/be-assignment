@@ -1,23 +1,32 @@
 import { utils } from './helpers/utils';
-import fastify from 'fastify'
+import fastify from 'fastify';
+import cors from "@fastify/cors";
+import supertokens from "supertokens-node";
+import { plugin, errorHandler } from "supertokens-node/framework/fastify";
+import formDataPlugin from "@fastify/formbody";
 import pino from 'pino';
 import userRouter from './routes/user.router'
-import postRouter from './routes/post.router';
-import loadConfig from './config'
+import loadConfig, { apiDomain } from './config'
+import fastifyListRoutes from 'fastify-list-routes';
+// import prismaPlugin from './plugins/prisma';
+
 loadConfig()
 
-const port = process.env.API_PORT || 5000;
+const port = parseInt(process.env.API_PORT) || 5000;
 
 const startServer = async () => {
   try {
     const server = fastify({
       logger: pino({ level: 'info' }),
     })
-    server.register(require('fastify-formbody'))
-    server.register(require('fastify-cors'))
-    server.register(require('fastify-helmet'))
+    await server.register(fastifyListRoutes, { colors: true });
+    await server.register(formDataPlugin);
+    await server.register(plugin);
+    // server.register(prismaPlugin);
+    
+    server.setErrorHandler(errorHandler());
+    
     server.register(userRouter, { prefix: '/api/user' })
-    server.register(postRouter, { prefix: '/api/post' })
     server.setErrorHandler((error, request, reply) => {
       server.log.error(error);
     })
@@ -32,6 +41,12 @@ const startServer = async () => {
         reply.status(500).send()
       }
     })
+    server.register(cors, {
+        origin: apiDomain,
+        allowedHeaders: ['Content-Type', ...supertokens.getAllCORSHeaders()],
+        credentials: true,
+    });
+
     if (process.env.NODE_ENV === 'production') {
       for (const signal of ['SIGINT', 'SIGTERM']) {
         process.on(signal, () =>
@@ -42,7 +57,8 @@ const startServer = async () => {
         )
       }
     }
-    await server.listen(port)
+    
+    await server.listen({ port })
   } catch (e) {
     console.error(e)
   }
