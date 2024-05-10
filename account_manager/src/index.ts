@@ -8,27 +8,35 @@ import pino from 'pino';
 import userRouter from './routes/user.router'
 import loadConfig, { apiDomain } from './config'
 import fastifyListRoutes from 'fastify-list-routes';
-// import prismaPlugin from './plugins/prisma';
+import { FastifyError } from './helpers/errors';
+import { ERROR500 } from 'helpers/constants';
 
 loadConfig()
 
 const port = parseInt(process.env.API_PORT) || 5000;
+export const server = fastify({
+  logger: pino({ level: 'info' }),
+});
 
 const startServer = async () => {
   try {
-    const server = fastify({
-      logger: pino({ level: 'info' }),
-    })
     await server.register(fastifyListRoutes, { colors: true });
     await server.register(formDataPlugin);
     await server.register(plugin);
-    // server.register(prismaPlugin);
     
     server.setErrorHandler(errorHandler());
     
     server.register(userRouter, { prefix: '/api/user' })
     server.setErrorHandler((error, request, reply) => {
       server.log.error(error);
+      if (error instanceof FastifyError) {
+        reply.status(error.replyCode).send({
+          code: error.replyCode,
+          message: error.message
+        })
+      } else {
+        reply.send(error)
+      }
     })
     server.get('/', (request, reply) => {
       reply.send({ name: 'fastify-typescript' })

@@ -8,7 +8,7 @@ import pino from 'pino';
 import transactionRouter from './routes/transactions.router'
 import loadConfig, { apiDomain } from './config'
 import fastifyListRoutes from 'fastify-list-routes';
-// import prismaPlugin from './plugins/prisma';
+import { FastifyError } from './helpers/errors';
 
 loadConfig()
 
@@ -22,13 +22,20 @@ const startServer = async () => {
     await server.register(fastifyListRoutes, { colors: true });
     await server.register(formDataPlugin);
     await server.register(plugin);
-    // server.register(prismaPlugin);
     
     server.setErrorHandler(errorHandler());
     
     server.register(transactionRouter, { prefix: '/api/transactions' })
     server.setErrorHandler((error, request, reply) => {
       server.log.error(error);
+      if (error instanceof FastifyError) {
+        reply.status(error.replyCode).send({
+          code: error.replyCode,
+          message: error.message
+        })
+      } else {
+        reply.send(error)
+      }
     })
     server.get('/', (request, reply) => {
       reply.send({ name: 'fastify-typescript' })

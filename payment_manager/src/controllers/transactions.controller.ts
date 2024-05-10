@@ -1,7 +1,7 @@
 import { FastifyReply } from 'fastify'
 import { prisma } from '../helpers/utils'
-import { handleServerError } from '../helpers/errors'
-import { STANDARD, ERROR404, ERROR500 } from '../helpers/constants'
+import { BadRequestError, NotFoundError } from '../helpers/errors'
+import { STANDARD } from '../helpers/constants'
 import { ITransaction } from 'interfaces/transactions'
 import { Prisma } from '@prisma/client';
 
@@ -26,6 +26,10 @@ const getPaById = async(userId: string, id: string) => {
       id: BigInt(id)
     }
   });
+
+  if (!pa) {
+    throw new NotFoundError("Payment account not found")
+  }
 
   return pa
 }
@@ -67,7 +71,7 @@ const processTransaction = async(
       const id = createNewId();
       const currentAccountAmount = paymentAccount.amount.toNumber();
       if (operation === 'withdraw' && currentAccountAmount < amount) {
-        return reject("Payment account number is less than amount to withdraw")
+        throw new BadRequestError("Payment account number is less than amount to withdraw")
       }
       const totalAmount = operation === 'send' ? currentAccountAmount + amount : currentAccountAmount - amount;
       
@@ -88,58 +92,38 @@ const processTransaction = async(
 }
 
 export const sendPaymentAccount = async (request: ITransaction, reply: FastifyReply) => {
+  const userId = request.session!.getUserId();
+  const id = request.params.id;
+  const { amount } = request.body;
+
+  const pa = await getPaById(userId, id);
+
   try {
-    const userId = request.session!.getUserId();
-    const id = request.params.id;
-    const { amount } = request.body;
-
-    const pa = await getPaById(userId, id);
-    if (!pa) {
-      reply.code(ERROR404.statusCode).send({
-        code: ERROR404.statusCode,
-        message: ERROR404.message
-      })
-    }
-
-    try {
-      await processTransaction(pa, { amount, operation: 'send' });
-    } catch (e) {
-      await createTransaction(pa, { amount, operation: 'send', status: 'failed' });
-      throw new Error(e)
-    }
-
-    reply.code(STANDARD.SUCCESS).send({
-      message: "Send Transaction Success"
-    })
-  } catch (err) {
-    handleServerError(reply, err)
+    await processTransaction(pa, { amount, operation: 'send' });
+  } catch (e) {
+    await createTransaction(pa, { amount, operation: 'send', status: 'failed' });
+    throw new Error(e)
   }
+
+  reply.code(STANDARD.SUCCESS).send({
+    message: "Send Transaction Success"
+  })
 }
 
 export const withdrawPaymentAccount = async (request: ITransaction, reply: FastifyReply) => {
+  const userId = request.session!.getUserId();
+  const id = request.params.id;
+  const { amount } = request.body;
+
+  const pa = await getPaById(userId, id);
+
   try {
-    const userId = request.session!.getUserId();
-    const id = request.params.id;
-    const { amount } = request.body;
-
-    const pa = await getPaById(userId, id);
-    if (!pa) {
-      reply.code(ERROR404.statusCode).send({
-        code: ERROR404.statusCode,
-        message: ERROR404.message
-      })
-    }
-
-    try {
-      await processTransaction(pa, { amount, operation: 'withdraw' });
-    } catch (e) {
-      await createTransaction(pa, { amount, operation: 'withdraw', status: 'failed' });
-    }
-
-    reply.code(STANDARD.SUCCESS).send({
-      message: "Withdraw Transaction Success"
-    })
-  } catch (err) {
-    handleServerError(reply, err)
+    await processTransaction(pa, { amount, operation: 'withdraw' });
+  } catch (e) {
+    await createTransaction(pa, { amount, operation: 'withdraw', status: 'failed' });
   }
+
+  reply.code(STANDARD.SUCCESS).send({
+    message: "Withdraw Transaction Success"
+  })
 }

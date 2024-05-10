@@ -1,18 +1,25 @@
-import { FastifyReply } from "fastify"
-import { ERROR500 } from "./constants"
+import { ERROR400, ERROR404, ERROR500 } from "./constants"
 
-export const ERRORS = {
-  invalidToken: new Error('Token is invalid.'),
-  userExists: new Error('User already exists'),
-  userNotExists: new Error('User not exists'),
-  userCredError: new Error('Invalid credential'),
-  tokenError: new Error('Invalid Token'),
+export class FastifyError extends Error {
+  constructor(public replyCode, message) {
+    super(message);
+  }
 }
 
-export function handleServerError(reply: FastifyReply, error: any) {
-  console.error(error);
-  return reply.status(ERROR500.statusCode).send({
-    code: ERROR500.statusCode,
-    message: error.message
-  });
+export class InternalServerError extends FastifyError {
+  constructor(message = ERROR500.message) {
+    super(ERROR500.statusCode, message);
+  }
+}
+
+export class NotFoundError extends FastifyError {
+  constructor(message = ERROR404.message) {
+    super(ERROR404.statusCode, message);
+  }
+}
+
+export class BadRequestError extends FastifyError {
+  constructor(message = ERROR400.message) {
+    super(ERROR400.statusCode, message);
+  }
 }
