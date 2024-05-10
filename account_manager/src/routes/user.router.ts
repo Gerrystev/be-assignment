@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import { loginSchema, signupSchema, createPaymentAccountSchema } from '../schema'
+import { createPaymentAccountSchema, topupSchema } from '../schema'
 import * as controllers from '../controllers'
 import { verifySession } from "supertokens-node/recipe/session/framework/fastify";
 
@@ -36,7 +36,7 @@ async function userRouter(fastify: FastifyInstance) {
   fastify.route({
     method: 'PUT',
     url: '/payment-account/:id/topup',
-    schema: signupSchema,
+    schema: topupSchema,
     preHandler: verifySession(),
     handler: controllers.topupPaymentAccount,
   })

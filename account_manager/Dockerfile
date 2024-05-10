@@ -3,10 +3,9 @@ FROM node:latest AS builder
 
 WORKDIR /usr/src/app
 
-COPY package.json package.json
+COPY . .
 RUN npm install --production
-
-COPY lib lib
+RUN npm run build
 
 # Stage 2: Create the production image
 FROM node:current-alpine

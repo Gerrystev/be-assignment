@@ -27,7 +27,7 @@
     "env-schema": "^4.0.0",
     "fastify": "^4.27.0",
     "fastify-list-routes": "^1.0.0",
-    "fluent-json-schema": "^3.1.0",
+    "fluent-json-schema": "^4.2.1",
     "jsonwebtoken": "^9.0.2",
     "jwks-rsa": "^3.1.0",
     "pino": "^9.0.0",
