@@ -5,7 +5,10 @@ CREATE SCHEMA IF NOT EXISTS "auth";
 CREATE SCHEMA IF NOT EXISTS "public";
 
 -- CreateEnum
-CREATE TYPE "public"."transaction_status" AS ENUM ('pending', 'paid', 'failed');
+CREATE TYPE "public"."transaction_status" AS ENUM ('pending', 'success', 'failed');
+
+-- CreateEnum
+CREATE TYPE "public"."transaction_operation" AS ENUM ('send', 'withdraw');
 
 -- CreateTable
 CREATE TABLE "auth"."all_auth_recipe_users" (
@@ -422,9 +425,9 @@ CREATE TABLE "public"."transactions" (
     "id" BIGINT NOT NULL,
     "amount" DECIMAL(65,30) NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
-    "from_payment_account_id" BIGINT NOT NULL,
-    "to_payment_account_id" BIGINT NOT NULL,
+    "payment_account_id" BIGINT NOT NULL,
     "status" "public"."transaction_status" NOT NULL,
+    "operation" "public"."transaction_operation" NOT NULL,
 
     CONSTRAINT "transactions_pkey" PRIMARY KEY ("id")
 );
@@ -724,8 +727,5 @@ ALTER TABLE "auth"."userid_mapping" ADD CONSTRAINT "userid_mapping_supertokens_u
 ALTER TABLE "public"."payment_accounts" ADD CONSTRAINT "payment_accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."all_auth_recipe_users"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."transactions" ADD CONSTRAINT "transactions_from_payment_account_id_fkey" FOREIGN KEY ("from_payment_account_id") REFERENCES "public"."payment_accounts"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "public"."transactions" ADD CONSTRAINT "transactions_to_payment_account_id_fkey" FOREIGN KEY ("to_payment_account_id") REFERENCES "public"."payment_accounts"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."transactions" ADD CONSTRAINT "transactions_payment_account_id_fkey" FOREIGN KEY ("payment_account_id") REFERENCES "public"."payment_accounts"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 

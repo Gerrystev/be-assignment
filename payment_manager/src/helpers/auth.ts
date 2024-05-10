@@ -1,59 +1,33 @@
-import { FastifyRequest, FastifyReply } from 'fastify'
-import { prisma } from '../helpers/utils'
-import { ERROR400, ERROR401 } from './constants'
-import { IUserRequest } from 'interfaces'
-import * as JWT from 'jsonwebtoken'
+import { apiDomain } from 'config/index';
+import jwksClient from 'jwks-rsa';
+import jwt from "supertokens-node/recipe/jwt"
+import JsonWebToken, { JwtHeader, SigningKeyCallback } from 'jsonwebtoken';
 
-export const checkValidRequest = (
-  request: FastifyRequest,
-  reply: FastifyReply,
-  done,
-) => {
-  try {
-    let token = request.headers.authorization
-    token = token.replace('Bearer ', '')
-    if (token) {
-      JWT.verify(token, process.env.APP_JWT_SECRET, (err, decoded) => {
-        if (err) {
-          return reply.code(ERROR400.statusCode).send(ERROR400)
-        }
-        done()
-      })
-    } else {
-      return reply.code(ERROR400.statusCode).send(ERROR400)
+export const createJWT = async (payload: any) => {
+    let jwtResponse = await jwt.createJWT({
+        ...payload,
+        source: "microservice"
+    });
+    if (jwtResponse.status === "OK") {
+        // Send JWT as Authorization header to M2
+        return jwtResponse.jwt;
     }
-  } catch (e) {
-    return reply.code(ERROR400.statusCode).send(ERROR400)
-  }
+    throw new Error("Unable to create JWT. Should never come here.")
 }
 
-export const checkValidUser = async (
-  request: IUserRequest,
-  reply: FastifyReply,
-  done,
-) => {
-  try {
-    let token = request.headers.authorization
-    token = token.replace('Bearer ', '')
+export class SupertokensJwt {
+  private client: jwksClient.JwksClient;
 
-    if (!token) {
-      return reply.code(ERROR401.statusCode).send(ERROR401)
-    }
+  constructor() {
+    this.client = jwksClient({
+      jwksUri: `${apiDomain}/auth/jwt/jwks.json`
+    })
+  }
 
-    const user: any = JWT.verify(token, process.env.APP_JWT_SECRET)
-
-    if (!user.id) {
-      return reply.code(ERROR401.statusCode).send(ERROR401)
-    }
-
-    const userData = await prisma.user.findUnique({ where: { id: user.id } })
-
-    if (!userData) {
-      return reply.code(ERROR401.statusCode).send(ERROR401)
-    }
-    request.authUser = userData
-    done();
-  } catch (e) {
-    return reply.code(ERROR401.statusCode).send(e)
+  getKey(header: JwtHeader, callback: SigningKeyCallback) {
+    this.client.getSigningKey(header.kid, function (err, key) {
+      let signingKey = key!.getPublicKey();
+      callback(err, signingKey);
+    });
   }
 }
