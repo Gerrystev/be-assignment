@@ -34,14 +34,6 @@ async function userRouter(fastify: FastifyInstance) {
   })
 
   fastify.route({
-    method: 'PUT',
-    url: '/payment-account/:id/topup',
-    schema: topupSchema,
-    preHandler: verifySession(),
-    handler: controllers.topupPaymentAccount,
-  })
-
-  fastify.route({
     method: 'DELETE',
     url: '/payment-account/:id',
     preHandler: verifySession(),

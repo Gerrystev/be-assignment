@@ -12,7 +12,7 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
     const transactions = await prisma.transactions.findMany({
       relationLoadStrategy: 'join',
       include: {
-        from_payment_account: {
+        payment_account: {
           include: {
             user: {
               select: {
@@ -23,7 +23,7 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
         }
       },
       where: {
-        from_payment_account: {
+        payment_account: {
           user_id: {
             equals: userId
           }
@@ -34,8 +34,7 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
       return {
         id: o.id,
         amount: o.amount,
-        from_payment_account_id: o.from_payment_account_id.toString(),
-        to_payment_account_id: o.to_payment_account_id.toString(),
+        payment_account_id: o.payment_account_id.toString(),
         status: o.status,
         timestamp: o.timestamp
       }
@@ -161,36 +160,6 @@ export const createPaymentAccount = async (request: ICreatePaymentAccount, reply
   }
 }
 
-export const topupPaymentAccount = async (request: ITopupPaymentAccount, reply: FastifyReply) => {
-  try {
-    const userId = request.session!.getUserId();
-    const id = request.params.id;
-    const { amount } = request.body;
-
-    const pa = await getPaById(userId, id);
-    if (!pa) {
-      reply.code(ERROR404.statusCode).send({
-        code: ERROR404.statusCode,
-        message: ERROR404.message
-      })
-    }
-
-    await prisma.payment_accounts.update({
-      data: {
-        amount
-      },
-      where: {
-        id: BigInt(id)
-      }
-    });
-    reply.code(STANDARD.SUCCESS).send({
-      message: "Topup Success"
-    })
-  } catch (err) {
-    handleServerError(reply, err)
-  }
-}
-
 export const deletePaymentAccount = async (request: IPaymentAccount, reply: FastifyReply) => {
   try {
     const userId = request.session!.getUserId();
@@ -226,7 +195,7 @@ export const listTransactionsByPaymentAccountId = async (request: IPaymentAccoun
     const transactions = await prisma.transactions.findMany({
       relationLoadStrategy: 'join',
       include: {
-        from_payment_account: {
+        payment_account: {
           include: {
             user: {
               select: {
@@ -237,7 +206,7 @@ export const listTransactionsByPaymentAccountId = async (request: IPaymentAccoun
         }
       },
       where: {
-        from_payment_account: {
+        payment_account: {
           user_id: {
             equals: userId
           },
@@ -249,8 +218,7 @@ export const listTransactionsByPaymentAccountId = async (request: IPaymentAccoun
       return {
         id: o.id,
         amount: o.amount,
-        from_payment_account_id: o.from_payment_account_id.toString(),
-        to_payment_account_id: o.to_payment_account_id.toString(),
+        payment_account_id: o.payment_account_id.toString(),
         status: o.status,
         timestamp: o.timestamp
       }

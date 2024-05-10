@@ -550,7 +550,6 @@ model payment_accounts {
   amount               Decimal
   user                 all_auth_recipe_users             @relation(fields: [user_id], references: [user_id])
   user_id              String
-  from_transactions    transactions[]                     @relation("from_payment_account")
   to_transactions      transactions[]                     @relation("to_payment_account")
 
   @@schema("public")
@@ -560,19 +559,25 @@ model transactions {
   id                           BigInt                         @id
   amount                       Decimal
   timestamp                    DateTime
-  from_payment_account         payment_accounts                @relation("from_payment_account", fields: [from_payment_account_id], references: [id])
-  from_payment_account_id      BigInt                         
-  to_payment_account           payment_accounts                @relation("to_payment_account", fields: [to_payment_account_id], references: [id])
-  to_payment_account_id        BigInt                         
+  payment_account              payment_accounts               @relation("to_payment_account", fields: [payment_account_id], references: [id])
+  payment_account_id           BigInt                         
   status                       transaction_status
+  operation                    transaction_operation
 
   @@schema("public")
 }
 
 enum transaction_status {
   pending
-  paid
+  success
   failed
+
+  @@schema("public")
+}
+
+enum transaction_operation {
+  send
+  withdraw
 
   @@schema("public")
 }
