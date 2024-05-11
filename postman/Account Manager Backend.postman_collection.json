@@ -88,7 +88,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{account_manager_uri}}/api/user/payment-account",
+							"raw": "{{account_manager_uri}}/api/user/payment-account?offset=0&limit=5",
 							"host": [
 								"{{account_manager_uri}}"
 							],
@@ -96,6 +96,16 @@
 								"api",
 								"user",
 								"payment-account"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -161,7 +171,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{account_manager_uri}}/api/user/payment-account/:id/transactions",
+							"raw": "{{account_manager_uri}}/api/user/payment-account/:id/transactions?offset=0&limit=5",
 							"host": [
 								"{{account_manager_uri}}"
 							],
@@ -171,6 +181,16 @@
 								"payment-account",
 								":id",
 								"transactions"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
 							],
 							"variable": [
 								{
