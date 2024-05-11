@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "setup:sudo": "sudo rm -rf account_manager/prisma && sudo rm -rf payment_manager/prisma && sudo cp -r db_migrate/prisma account_manager/prisma && sudo cp -r db_migrate/prisma payment_manager/prisma && sudo rm -rf account_manager/prisma/migrations && sudo rm -rf payment/prisma/migrations && cd account_manager && npm install && npx prisma generate && cd .. && npm install && cd payment_manager && npx prisma generate",
-    "setup": "rm -rf account_manager/prisma && rm -rf payment_manager/prisma && cp -r db_migrate/prisma account_manager/prisma && cp -r db_migrate/prisma payment_manager/prisma && rm -rf account_manager/prisma/migrations && rm -rf payment/prisma/migrations && cd account_manager && npm install && npx prisma generate && cd .. && npm install && cd payment_manager && npx prisma generate"
+    "setup:account_manager": "cd account_manager && cp .env.example .env && npm install && npx prisma generate && cd ..",
+    "setup:account_manager:sudo": "cd account_manager && sudo cp .env.example .env && npm install && npx prisma generate && cd ..",
+    "setup:payment_manager": "cd payment_manager && cp .env.example .env && npm install && npx prisma generate && cd ..",
+    "setup:payment_manager:sudo": "cd payment_manager && sudo cp .env.example .env && npm install && npx prisma generate && cd ..",
+    "setup:db_migrate": "cd db_migrate && cp .env.example .env && cd ..",
+    "setup:db_migrate:sudo": "cd db_migrate && sudo cp .env.example .env && cd ..",
+    "setup:sudo": "sudo rm -rf account_manager/prisma && sudo rm -rf payment_manager/prisma && sudo cp -r db_migrate/prisma account_manager/prisma && sudo cp -r db_migrate/prisma payment_manager/prisma && sudo rm -rf account_manager/prisma/migrations && sudo rm -rf payment/prisma/migrations && npm run setup:db_migrate:sudo && npm run setup:account_manager:sudo && npm run setup:payment_manager:sudo",
+    "setup": "rm -rf account_manager/prisma && rm -rf payment_manager/prisma && cp -r db_migrate/prisma account_manager/prisma && cp -r db_migrate/prisma payment_manager/prisma && rm -rf account_manager/prisma/migrations && rm -rf payment/prisma/migrations && npm run setup:db_migrate && npm run setup:account_manager && npm run setup:payment_manager"
   },
   "author": "",
   "license": "ISC",
