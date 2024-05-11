@@ -15,7 +15,7 @@ Read apis for these features in:
 **Note**
 To authorise, you need to:
 - Request `/api/signin` or `/api/session/refresh` in account manager
-- Get its access token and refresh token from `st-access-token` header
+- Get its access token and refresh token from `st-access-token` and `st-refresh-token` header
 - Apply at swagger authorize `accessTokenBearer` and `refreshTokenBearer`
 
 
