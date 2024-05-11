@@ -23,6 +23,7 @@ This repository has these following directories:
 - NodeJS: Already experienced with NodeJS
 - Fastify: Chosen due recommendation and its speed
 - Docker: For containerization
+- Prisma: For type ORM
 - PostgreSQL
 - Supertokens: For authentication purpose, and its ability to self hosted
 
