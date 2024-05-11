@@ -26,6 +26,9 @@ This repository has these following directories:
 - PostgreSQL
 - Supertokens: For authentication purpose, and its ability to self hosted
 
+## Database Structure
+![ERD](/docs/ERD.jpg)
+
 ## Prerequisites
 - Make sure to installed docker compose
 - Make sure to there are no conflicting ports on these ports:
@@ -34,7 +37,7 @@ This repository has these following directories:
     - `8080`: for Account Manager service
     - `8081`: for Payment Manager service
 
-## Setup:
+## Setup
 Run this command to setup:
 ```
     # To run setup
@@ -44,7 +47,7 @@ Run this command to setup:
     npm run setup:sudo
 ```
 
-## Run Services:
+## Run Services
 To run services, run docker compose file:
 ```
     docker compose up
