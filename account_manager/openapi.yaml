@@ -1,0 +1,1095 @@
+openapi: 3.0.3
+info:
+  title: Account Manager Backend
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/user/transactions:
+    get:
+      tags:
+        - Payment Accounts
+      summary: List all transactions in user
+      description: List all transactions in user
+      operationId: listAllTransactionsInUser
+      responses:
+        '200':
+          description: List all transactions in user
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 07:51:43 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            content-length:
+              schema:
+                type: string
+                example: '1024'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  result:
+                    type: object
+                    properties:
+                      '1715407506':
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              type: number
+                              example: 1000
+                            currency:
+                              type: string
+                              example: JPY
+                            id:
+                              type: string
+                              example: '1715407798'
+                            status:
+                              type: string
+                              example: success
+                            timestamp:
+                              type: string
+                              example: '2024-05-11T06:09:58.297Z'
+                        example:
+                          - amount: 1000
+                            currency: JPY
+                            id: '1715407798'
+                            status: success
+                            timestamp: '2024-05-11T06:09:58.297Z'
+                          - amount: 1000
+                            currency: JPY
+                            id: '1715407812'
+                            status: success
+                            timestamp: '2024-05-11T06:10:11.536Z'
+                          - amount: 1000
+                            currency: JPY
+                            id: '1715407856'
+                            status: success
+                            timestamp: '2024-05-11T06:10:55.595Z'
+                          - amount: 1000
+                            currency: JPY
+                            id: '1715407879'
+                            status: success
+                            timestamp: '2024-05-11T06:11:18.621Z'
+                          - amount: 1000
+                            currency: JPY
+                            id: '1715407883'
+                            status: success
+                            timestamp: '2024-05-11T06:11:23.298Z'
+                          - amount: 1000
+                            currency: JPY
+                            id: '1715407903'
+                            status: success
+                            timestamp: '2024-05-11T06:11:43.395Z'
+                          - amount: 10
+                            currency: USD
+                            id: '1715407922'
+                            status: success
+                            timestamp: '2024-05-11T06:12:01.836Z'
+                          - amount: 100
+                            currency: JPY
+                            id: '1715407970'
+                            status: success
+                            timestamp: '2024-05-11T06:12:49.539Z'
+                          - amount: 100
+                            currency: JPY
+                            id: '1715408341'
+                            status: success
+                            timestamp: '2024-05-11T06:19:01.183Z'
+              examples:
+                List all transactions in user:
+                  value:
+                    message: Success
+                    result:
+                      '1715407506':
+                        - amount: 1000
+                          currency: JPY
+                          id: '1715407798'
+                          status: success
+                          timestamp: '2024-05-11T06:09:58.297Z'
+                        - amount: 1000
+                          currency: JPY
+                          id: '1715407812'
+                          status: success
+                          timestamp: '2024-05-11T06:10:11.536Z'
+                        - amount: 1000
+                          currency: JPY
+                          id: '1715407856'
+                          status: success
+                          timestamp: '2024-05-11T06:10:55.595Z'
+                        - amount: 1000
+                          currency: JPY
+                          id: '1715407879'
+                          status: success
+                          timestamp: '2024-05-11T06:11:18.621Z'
+                        - amount: 1000
+                          currency: JPY
+                          id: '1715407883'
+                          status: success
+                          timestamp: '2024-05-11T06:11:23.298Z'
+                        - amount: 1000
+                          currency: JPY
+                          id: '1715407903'
+                          status: success
+                          timestamp: '2024-05-11T06:11:43.395Z'
+                        - amount: 10
+                          currency: USD
+                          id: '1715407922'
+                          status: success
+                          timestamp: '2024-05-11T06:12:01.836Z'
+                        - amount: 100
+                          currency: JPY
+                          id: '1715407970'
+                          status: success
+                          timestamp: '2024-05-11T06:12:49.539Z'
+                        - amount: 100
+                          currency: JPY
+                          id: '1715408341'
+                          status: success
+                          timestamp: '2024-05-11T06:19:01.183Z'
+      security:
+        - sAccessToken: []
+  /api/user/payment-account:
+    get:
+      tags:
+        - Payment Accounts
+      summary: List payment accounts in user
+      description: List payment accounts in user
+      operationId: listPaymentAccountsInUser
+      responses:
+        '200':
+          description: List payment accounts in user
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 06:17:14 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            content-length:
+              schema:
+                type: string
+                example: '105'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        amount:
+                          type: number
+                          example: 7457.85
+                        currency:
+                          type: string
+                          example: JPY
+                        id:
+                          type: string
+                          example: '1715407506'
+                        type:
+                          type: string
+                          example: Debit JPY
+                    example:
+                      - amount: 7457.85
+                        currency: JPY
+                        id: '1715407506'
+                        type: Debit JPY
+              examples:
+                List payment accounts in user:
+                  value:
+                    message: Success
+                    result:
+                      - amount: 7457.85
+                        currency: JPY
+                        id: '1715407506'
+                        type: Debit JPY
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - Payment Accounts
+      summary: Create payment account
+      description: Create payment account
+      operationId: createPaymentAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                currency:
+                  type: string
+                  example: JPY
+                type:
+                  type: string
+                  example: Debit JPY
+            examples:
+              Create payment account:
+                value:
+                  currency: JPY
+                  type: Debit JPY
+      responses:
+        '200':
+          description: Create payment account
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 05:48:40 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            content-length:
+              schema:
+                type: string
+                example: '66'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Created payment account
+                  result:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '1715406521'
+              examples:
+                Create payment account:
+                  value:
+                    message: Created payment account
+                    result:
+                      id: '1715406521'
+      security:
+        - bearerAuth: []
+  /api/user/payment-account/{id}/transactions:
+    get:
+      tags:
+        - Payment Accounts
+      summary: List transactions in payment account
+      description: List transactions in payment account
+      operationId: listTransactionsInPaymentAccount
+      responses:
+        '200':
+          description: List transactions in payment account
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 07:39:23 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            content-length:
+              schema:
+                type: string
+                example: '1333'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        amount:
+                          type: string
+                          example: '1000'
+                        currency:
+                          type: string
+                          example: JPY
+                        id:
+                          type: string
+                          example: '1715407798'
+                        payment_account_id:
+                          type: string
+                          example: '1715407506'
+                        status:
+                          type: string
+                          example: success
+                        timestamp:
+                          type: string
+                          example: '2024-05-11T06:09:58.297Z'
+                    example:
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407798'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:09:58.297Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407812'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:10:11.536Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407856'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:10:55.595Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407879'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:11:18.621Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407883'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:11:23.298Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407903'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:11:43.395Z'
+                      - amount: '10'
+                        currency: USD
+                        id: '1715407922'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:12:01.836Z'
+                      - amount: '100'
+                        currency: JPY
+                        id: '1715407970'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:12:49.539Z'
+                      - amount: '100'
+                        currency: JPY
+                        id: '1715408341'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:19:01.183Z'
+              examples:
+                List transactions in payment account:
+                  value:
+                    message: Success
+                    result:
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407798'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:09:58.297Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407812'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:10:11.536Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407856'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:10:55.595Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407879'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:11:18.621Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407883'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:11:23.298Z'
+                      - amount: '1000'
+                        currency: JPY
+                        id: '1715407903'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:11:43.395Z'
+                      - amount: '10'
+                        currency: USD
+                        id: '1715407922'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:12:01.836Z'
+                      - amount: '100'
+                        currency: JPY
+                        id: '1715407970'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:12:49.539Z'
+                      - amount: '100'
+                        currency: JPY
+                        id: '1715408341'
+                        payment_account_id: '1715407506'
+                        status: success
+                        timestamp: '2024-05-11T06:19:01.183Z'
+      security:
+        - sAccessToken: []
+    parameters:
+      - name: id
+        description: payment account id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '1715407506'
+  /api/user/payment-account/{id}:
+    get:
+      tags:
+        - Payment Accounts
+      summary: Get payment account by id
+      description: Get payment account by id
+      operationId: getPaymentAccountById
+      responses:
+        '200':
+          description: Get payment account by id
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 06:17:51 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            content-length:
+              schema:
+                type: string
+                example: '103'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  result:
+                    type: object
+                    properties:
+                      amount:
+                        type: number
+                        example: 7457.85
+                      currency:
+                        type: string
+                        example: JPY
+                      id:
+                        type: string
+                        example: '1715407506'
+                      type:
+                        type: string
+                        example: Debit JPY
+              examples:
+                Get payment account by id:
+                  value:
+                    message: Success
+                    result:
+                      amount: 7457.85
+                      currency: JPY
+                      id: '1715407506'
+                      type: Debit JPY
+      security:
+        - sAccessToken: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '1715407506'
+  /api/signin:
+    post:
+      summary: Login
+      description: Login
+      operationId: login
+      parameters:
+        - name: st-auth-mode
+          in: header
+          schema:
+            type: string
+            example: cookie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                formFields:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: email
+                      value:
+                        type: string
+                        example: melissa@gmail.com
+                  example:
+                    - id: email
+                      value: melissa@gmail.com
+                    - id: password
+                      value: MellMel123
+            examples:
+              Login:
+                value:
+                  formFields:
+                    - id: email
+                      value: melissa@gmail.com
+                    - id: password
+                      value: MellMel123
+      responses:
+        '200':
+          description: Login
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 06:46:07 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://0.0.0.0:8080
+            access-control-expose-headers:
+              schema:
+                type: string
+                example: front-token
+            content-length:
+              schema:
+                type: string
+                example: '400'
+            front-token:
+              schema:
+                type: string
+                example: >-
+                  eyJ1aWQiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJhdGUiOjE3MTU0MTM1NjcwMDAsInVwIjp7ImlhdCI6MTcxNTQwOTk2NywiZXhwIjoxNzE1NDEzNTY3LCJzdWIiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwic2Vzc2lvbkhhbmRsZSI6Ijg4NTNmMWJhLTU2OGMtNDVkNS1hMWZiLWRhOTBiNmUwMzhlYSIsInJlZnJlc2hUb2tlbkhhc2gxIjoiYWNiZjI1ZDg5NjE4ZTljZjJhNGY4YzM0Y2E3NDAxNTUzYmZlNDc1MmQ5MzFiZTc1NmYwMTBiZjY4MGM1MWVmZiIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjpudWxsLCJhbnRpQ3NyZlRva2VuIjpudWxsLCJpc3MiOiJodHRwOi8vMC4wLjAuMDo4MDgwL2FwaSJ9fQ==
+            set-cookie:
+              schema:
+                type: string
+                example: >-
+                  sRefreshToken=SQe9p9h4rBxXEaD6ml3ZOpukLI3lbWGoFnHihLkgEM75QkS3Sp2n2ooJPIp6GT%2BE006etKna4lCpdSE%2FLA7T5pEnyXK%2BPcNgh4%2Fjh3Dp0nR5R0ctY6Q8CuzYB6OjFEdjfb5P90Ywa%2BbNAfJZi9qdt6sbCR2%2FrCJGQzUZ2SQbyDlzh0CQUiDZqjNiw6nScIfIiCqaR4fSSRXddrEOFhw3bEIUTDuPp%2FWzuZHuSCNmCd6kBLu6M6LSa8KPd6MO4VefuLVjD15wnjnQRMRA8SLJ.9142c1057153b1a38cc592e2f6a57aa46bef37f4161885321f6ec49e5e9c2836.V2;
+                  Path=/api/session/refresh; Expires=Mon, 19 Aug 2024 06:46:07
+                  GMT; HttpOnly; SameSite=Lax
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: OK
+                  user:
+                    type: object
+                    properties:
+                      emails:
+                        type: array
+                        items:
+                          type: string
+                          example: melissa@gmail.com
+                        example:
+                          - melissa@gmail.com
+                      id:
+                        type: string
+                        example: fce8d86a-52c6-4340-bd8f-c69d10f6363d
+                      isPrimaryUser:
+                        type: boolean
+                        example: false
+                      loginMethods:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                              example: melissa@gmail.com
+                            recipeId:
+                              type: string
+                              example: emailpassword
+                            recipeUserId:
+                              type: string
+                              example: fce8d86a-52c6-4340-bd8f-c69d10f6363d
+                            tenantIds:
+                              type: array
+                              items:
+                                type: string
+                                example: public
+                              example:
+                                - public
+                            timeJoined:
+                              type: number
+                              example: 1715407498667
+                            verified:
+                              type: boolean
+                              example: false
+                        example:
+                          - email: melissa@gmail.com
+                            recipeId: emailpassword
+                            recipeUserId: fce8d86a-52c6-4340-bd8f-c69d10f6363d
+                            tenantIds:
+                              - public
+                            timeJoined: 1715407498667
+                            verified: false
+                      phoneNumbers:
+                        type: array
+                        items: {}
+                        example: []
+                      tenantIds:
+                        type: array
+                        items:
+                          type: string
+                          example: public
+                        example:
+                          - public
+                      thirdParty:
+                        type: array
+                        items: {}
+                        example: []
+                      timeJoined:
+                        type: number
+                        example: 1715407498667
+              examples:
+                Login:
+                  value:
+                    status: OK
+                    user:
+                      emails:
+                        - melissa@gmail.com
+                      id: fce8d86a-52c6-4340-bd8f-c69d10f6363d
+                      isPrimaryUser: false
+                      loginMethods:
+                        - email: melissa@gmail.com
+                          recipeId: emailpassword
+                          recipeUserId: fce8d86a-52c6-4340-bd8f-c69d10f6363d
+                          tenantIds:
+                            - public
+                          timeJoined: 1715407498667
+                          verified: false
+                      phoneNumbers: []
+                      tenantIds:
+                        - public
+                      thirdParty: []
+                      timeJoined: 1715407498667
+  /api/signup:
+    post:
+      summary: Signup
+      description: Signup
+      operationId: signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                formFields:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: email
+                      value:
+                        type: string
+                        example: melissa@gmail.com
+                  example:
+                    - id: email
+                      value: melissa@gmail.com
+                    - id: password
+                      value: MellMel123
+                    - id: fullname
+                      value: Mellisa Croft
+            examples:
+              Signup:
+                value:
+                  formFields:
+                    - id: email
+                      value: melissa@gmail.com
+                    - id: password
+                      value: MellMel123
+                    - id: fullname
+                      value: Mellisa Croft
+      responses:
+        '200':
+          description: Signup
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 10 May 2024 05:42:13 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            access-control-expose-headers:
+              schema:
+                type: string
+                example: front-token, st-access-token, st-refresh-token
+            content-length:
+              schema:
+                type: string
+                example: '400'
+            front-token:
+              schema:
+                type: string
+                example: >-
+                  eyJ1aWQiOiJjM2U2MWZjOC1kODg3LTRjNTItODE1NS1lY2YwMjBhMmNlMmIiLCJhdGUiOjE3MTUzMjMzMzEwMDAsInVwIjp7ImlhdCI6MTcxNTMxOTczMSwiZXhwIjoxNzE1MzIzMzMxLCJzdWIiOiJjM2U2MWZjOC1kODg3LTRjNTItODE1NS1lY2YwMjBhMmNlMmIiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiYzNlNjFmYzgtZDg4Ny00YzUyLTgxNTUtZWNmMDIwYTJjZTJiIiwic2Vzc2lvbkhhbmRsZSI6ImIxMmU0N2EzLWE3ZWEtNGJjZS1hMjE3LTdkZjM5ZGZlY2E0YiIsInJlZnJlc2hUb2tlbkhhc2gxIjoiODc3MGM5MTM0Y2Q5ZmM3NmFmYzE4ZDI0MTZmMmUzNDE0OGMwNDdiNDU0ZjE4ODhlNWI3NWE3Y2U2OTA0MTdkYiIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjpudWxsLCJhbnRpQ3NyZlRva2VuIjpudWxsLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpIn19
+            st-access-token:
+              schema:
+                type: string
+                example: >-
+                  eyJraWQiOiJkLTE3MTUzMTY2OTczOTgiLCJ0eXAiOiJKV1QiLCJ2ZXJzaW9uIjoiNSIsImFsZyI6IlJTMjU2In0.eyJpYXQiOjE3MTUzMTk3MzEsImV4cCI6MTcxNTMyMzMzMSwic3ViIjoiYzNlNjFmYzgtZDg4Ny00YzUyLTgxNTUtZWNmMDIwYTJjZTJiIiwidElkIjoicHVibGljIiwicnN1YiI6ImMzZTYxZmM4LWQ4ODctNGM1Mi04MTU1LWVjZjAyMGEyY2UyYiIsInNlc3Npb25IYW5kbGUiOiJiMTJlNDdhMy1hN2VhLTRiY2UtYTIxNy03ZGYzOWRmZWNhNGIiLCJyZWZyZXNoVG9rZW5IYXNoMSI6Ijg3NzBjOTEzNGNkOWZjNzZhZmMxOGQyNDE2ZjJlMzQxNDhjMDQ3YjQ1NGYxODg4ZTViNzVhN2NlNjkwNDE3ZGIiLCJwYXJlbnRSZWZyZXNoVG9rZW5IYXNoMSI6bnVsbCwiYW50aUNzcmZUb2tlbiI6bnVsbCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaSJ9.WD4Uae0YPOw3GwM2IVirovTBZ1HRdcHmlaGewnJ5dOxmIHPOmw-qcq_2Og-p4FpnNxTyvs9qAcyEiboTVhXbffCn-fmaKxVGj47gijXsdWOICAt4INaM-zF57FF1CCNYetckmuYjoUJaJW900WVv3GNMXd630hjNfwdunBj7CzvovpkCNzcZrY9xV-1b92hHQ5zg_jUpIxuggIGXfEJUV4vFRtbpAOWj3LqjVIpoxCMyP0oLtQtm6trKBNeBhFLyolxJXweI4Ov4b-ALrJTacB2rPJ3TW1C4Ba8KSMZO5j4PRr6GoYDuB0BrdUEsyhylvdKvhdk-evHqQGCXz-TZmw
+            st-refresh-token:
+              schema:
+                type: string
+                example: >-
+                  VgUqdCrilhgPQRgwQCmEw3VYwm13PNaX6dhkfcAqsbulZOJbWfpSAejjOmnlI3gQocVI/GJr6080pgQgfLrVaT5IE4980IEZGjvQzj6c87UT1K5ZtSaHoludrbv+vD+j2gYgNnMlZ57MchB4OQdyK9GKrEFCF11oLZsZuTwhqhNxl9LOYJuAk9v/jXXRB0CLaJZXZGtiN41oiM67oyUZ8OJcXDWNl9MwM8PZqgj+aykVZzyEE/zVgmJ5j0LUvgeZiCgds+/M8IX0ZZMMiLvg.94758038f808b7ddf24adfa075e8bd8f91471e6ac02015c102c987cc445b78ce.V2
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: OK
+                  user:
+                    type: object
+                    properties:
+                      emails:
+                        type: array
+                        items:
+                          type: string
+                          example: melissa@gmail.com
+                        example:
+                          - melissa@gmail.com
+                      id:
+                        type: string
+                        example: c3e61fc8-d887-4c52-8155-ecf020a2ce2b
+                      isPrimaryUser:
+                        type: boolean
+                        example: false
+                      loginMethods:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                              example: melissa@gmail.com
+                            recipeId:
+                              type: string
+                              example: emailpassword
+                            recipeUserId:
+                              type: string
+                              example: c3e61fc8-d887-4c52-8155-ecf020a2ce2b
+                            tenantIds:
+                              type: array
+                              items:
+                                type: string
+                                example: public
+                              example:
+                                - public
+                            timeJoined:
+                              type: number
+                              example: 1715319731693
+                            verified:
+                              type: boolean
+                              example: false
+                        example:
+                          - email: melissa@gmail.com
+                            recipeId: emailpassword
+                            recipeUserId: c3e61fc8-d887-4c52-8155-ecf020a2ce2b
+                            tenantIds:
+                              - public
+                            timeJoined: 1715319731693
+                            verified: false
+                      phoneNumbers:
+                        type: array
+                        items: {}
+                        example: []
+                      tenantIds:
+                        type: array
+                        items:
+                          type: string
+                          example: public
+                        example:
+                          - public
+                      thirdParty:
+                        type: array
+                        items: {}
+                        example: []
+                      timeJoined:
+                        type: number
+                        example: 1715319731693
+              examples:
+                Signup:
+                  value:
+                    status: OK
+                    user:
+                      emails:
+                        - melissa@gmail.com
+                      id: c3e61fc8-d887-4c52-8155-ecf020a2ce2b
+                      isPrimaryUser: false
+                      loginMethods:
+                        - email: melissa@gmail.com
+                          recipeId: emailpassword
+                          recipeUserId: c3e61fc8-d887-4c52-8155-ecf020a2ce2b
+                          tenantIds:
+                            - public
+                          timeJoined: 1715319731693
+                          verified: false
+                      phoneNumbers: []
+                      tenantIds:
+                        - public
+                      thirdParty: []
+                      timeJoined: 1715319731693
+  /api/session/refresh:
+    post:
+      security:
+        - sRefreshToken: []
+      summary: Refresh Session
+      description: Refresh Session
+      operationId: refreshSession
+      responses:
+        '200':
+          description: Refresh Session
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 07:07:38 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            access-control-expose-headers:
+              schema:
+                type: string
+                example: front-token
+            content-length:
+              schema:
+                type: string
+                example: '2'
+            front-token:
+              schema:
+                type: string
+                example: >-
+                  eyJ1aWQiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJhdGUiOjE3MTU0MTQ4NTgwMDAsInVwIjp7ImlhdCI6MTcxNTQxMTI1OCwiZXhwIjoxNzE1NDE0ODU4LCJzdWIiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwic2Vzc2lvbkhhbmRsZSI6IjAwNGVkZTA5LWE1NDctNGMzZS1hZmI3LWI5M2M3NGEwOTFhYSIsInJlZnJlc2hUb2tlbkhhc2gxIjoiNTI1MmVlYzk1OTU3ZTM4ZmZlZmM3YjZiZWVjNGNkODU3ZDFkY2ZiY2MyZjdlZTA3ZWRiMGJhYjkzYTg5OWNhYyIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjoiMDUwYmI4NzY2YTEyYWQzNDAwYzI0ZDUxZTY0ZmI4MDE0M2QzYmFlMDRlMTM2MGJhYjcxM2Q1NWI3MjE2OTE0NyIsImFudGlDc3JmVG9rZW4iOm51bGwsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGkifX0=
+            set-cookie:
+              schema:
+                type: string
+                example: >-
+                  sRefreshToken=zUbM0546mqJgXe73Y25jrFto%2FOVrms3x2Y92f3uhg4%2FrtPDuP2d%2BxxL6NOO82CxQRfDwKnKq%2FOJNkupBRg8LUwRu%2BIEPP6bU%2FL0PkXDRsiNfBjmFZ9M%2BQ%2FEs11tT9UmvnHpVm8PGiq0utU7dilNz6SjdEP3rBanFdO%2Bxgjezgv3PFgybU5%2FGMEHzA5eGpps2xxmrfV2YxLCLdrnLZsXOuFQOTGjcgqUgD2cpSer%2F37V71XpYJeOmZOU0yOwNC422M5h%2FvleJV08sY9o4OSN%2Bb%2BIlPBYC%2BA%2BCZeRzaIMRu%2FYHp8UFoqMDjDsdIfkUXJptYhRfLDwGBSy3XBCeffvxmPSTpo3wBlSSIyo3IJTX3XJylRKPpA8Kwz1JwU6wN1MDzuWUUpBARdkqXvVp.c80866d16dfba26e98f3274cb798f7bb51eafc7bd33a66e01e0f4df312e2266b.V2;
+                  Path=/api/session/refresh; Expires=Mon, 19 Aug 2024 07:07:38
+                  GMT; HttpOnly; SameSite=Lax
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Refresh Session:
+                  value: {}
+  /api/signout:
+    post:
+      security:
+        - sAccessToken: []
+      summary: Signout
+      description: Signout
+      operationId: signout
+      parameters:
+        - name: st-auth-mode
+          in: header
+          schema:
+            type: string
+            example: cookie
+      responses:
+        '200':
+          description: Signout
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Fri, 10 May 2024 15:54:39 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8080
+            access-control-expose-headers:
+              schema:
+                type: string
+                example: front-token
+            content-length:
+              schema:
+                type: string
+                example: '15'
+            front-token:
+              schema:
+                type: string
+                example: remove
+            set-cookie:
+              schema:
+                type: string
+                example: >-
+                  sRefreshToken=; Path=/api/session/refresh; Expires=Thu, 01 Jan
+                  1970 00:00:00 GMT; HttpOnly; SameSite=Lax
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: OK
+              examples:
+                Signout:
+                  value:
+                    status: OK
+components:
+  securitySchemes:
+    sAccessToken:
+      type: apiKey
+      in: cookie
+      name: sAccessToken  
+    sRefreshToken:
+      type: apiKey
+      in: cookie
+      name: sRefreshToken  
+tags:
+  - name: Payment Accounts

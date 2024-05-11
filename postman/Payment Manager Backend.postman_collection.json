@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "ae4efe4c-f121-4854-927a-e097f2141db6",
+		"name": "Payment Manager Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34586263"
+	},
+	"item": [
+		{
+			"name": "Send transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 10,\r\n    \"currency\": \"USD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/send",
+					"host": [
+						"{{payment_manager_uri}}"
+					],
+					"path": [
+						"api",
+						"transactions",
+						"payment-account",
+						":id",
+						"send"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1715407506"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send transaction",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 10,\r\n    \"currency\": \"USD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/send",
+							"host": [
+								"{{payment_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"payment-account",
+								":id",
+								"send"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1715407506"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "38"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 11 May 2024 06:12:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Send Transaction Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Withdraw transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 100,\r\n    \"currency\": \"JPY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/withdraw",
+					"host": [
+						"{{payment_manager_uri}}"
+					],
+					"path": [
+						"api",
+						"transactions",
+						"payment-account",
+						":id",
+						"withdraw"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1715407506"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Withdraw transaction",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 100,\r\n    \"currency\": \"JPY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/withdraw",
+							"host": [
+								"{{payment_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"payment-account",
+								":id",
+								"withdraw"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1715407506"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "42"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 11 May 2024 06:19:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Withdraw Transaction Success\"\n}"
+				}
+			]
+		}
+	]
+}

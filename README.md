@@ -1,74 +1,54 @@
-# Take home assignment
+# Backend Assignment Concrete AI
+Banking application with features:
+- Create various payment account on a user
+- Withdraw and Transfer from payment account securely from various currencies
+- Get transactions:
+  - Get all transaction within a user
+  - Get all transaction within a payment account in a user
+- Get all payment account in a user
+- Get a payment account from payment account id
+
+Read apis for these features in:
+- [Openapi Swagger for Account Manager](/account_manager/openapi.yaml)
+- [Openapi Swagger for Payment Manager](/payment_manager/openapi.yaml)
 
 
-## Description:
-Build 2 Backend services which manages user’s accounts and transactions (send/withdraw). 
+## About this project
+This repository has these following directories:
+- account_manager: account manager service source code
+- payment_manager: payment manager service source code
+- db_migrate: prisma directory to migrate database
 
-In Account Manager service, we have:
-- User: Login with Id/Password
-- Payment Account: One user can have multiple accounts like credit, debit, loan...
-- Payment History: Records of transactions
+## Tech Stack
+- NodeJS: Already experienced with NodeJS
+- Fastify: Chosen due recommendation and its speed
+- Docker: For containerization
+- PostgreSQL
+- Supertokens: For authentication purpose, and its ability to self hosted
 
-In Payment Manager service, we have:
-- Transaction: Include basic information like amount, timestamp, toAddress, status...
-- We have a core transaction process function, that will be executed by `/send` or `/withdraw` API:
-
-```js
-function processTransaction(transaction) {
-    return new Promise((resolve, reject) => {
-        console.log('Transaction processing started for:', transaction);
-
-        // Simulate long running process
-        setTimeout(() => {
-            // After 30 seconds, we assume the transaction is processed successfully
-            console.log('transaction processed for:', transaction);
-            resolve(transaction);
-        }, 30000); // 30 seconds
-    });
-}
-
-// Example usage
-let transaction = { amount: 100, currency: 'USD' }; // Sample transaction input
-processTransaction(transaction)
-    .then((processedTransaction) => {
-        console.log('transaction processing completed for:', processedTransaction);
-    })
-    .catch((error) => {
-        console.error('transaction processing failed:', error);
-    });
-```
-
-Features:
-- Users need to register/log in and then be able to call APIs.
-- APIs for 2 operations send/withdraw. Account statements will be updated after the transaction is successful.
-- APIs to retrieve all accounts and transactions per account of the user.
-- Write Swagger docs for implemented APIs (Optional)
-
-### Tech-stack:
-- Recommend using authentication 3rd party: Supertokens, Supabase...
-- `NodeJs/Golang` for API server (`Fastify/Gin` framework is the best choices)
-- `PostgreSQL/MongoDB` for Database. Recommend using `Prisma` for ORM.
-- `Docker` for containerization. Recommend using `docker-compose` for running containers.
- 
-## Target:
-- Good document/README to describe your implementation.
-- Make sure app functionality works as expected. Run and test it well.
-- Containerized and run the app using Docker.
-- Using `docker-compose` or any automation script to run the app with single command is a plus.
+## Prerequisites
+- Make sure to installed docker compose
+- Make sure to there are no conflicting ports on these ports:
+    - `5432`: for PostgreSQL service
+    - `3567`: for Supertokens service
+    - `8080`: for Account Manager service
+    - `8081`: for Payment Manager service
 
 ## Setup:
-Make sure to have docker and docker-compose installed
+Run this command to setup:
+```
+    # To run setup
+    npm run setup
 
-1. Set your `DATABASE_URL` env variable at `.env`
-2. Run setup script
-   ```
-   # To run setup
-   npm run setup
+    # To run with priviledge
+    npm run setup:sudo
+```
 
-   # To run with priviledge
-   npm run setup:sudo
-   ```
-2. Run docker compose file
-   ```
-   docker compose up
-   ```
+## Run Services:
+To run services, run docker compose file:
+```
+    docker compose up
+```
+
+## Additional Infos
+- If you want to use postman, you can use postman collection at [./postman directory](/postman)

@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Payment Manager Backend
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://0.0.0.0:8081
+paths:
+  /api/transactions/payment-account/{id}/send:
+    post:
+      security:
+        - sAccessToken: []
+      summary: Send transaction
+      description: Send transaction
+      operationId: sendTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  example: 10
+                currency:
+                  type: string
+                  example: USD
+            examples:
+              Send transaction:
+                value:
+                  amount: 10
+                  currency: USD
+      responses:
+        '200':
+          description: Send transaction
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 06:12:01 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8081
+            content-length:
+              schema:
+                type: string
+                example: '38'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Send Transaction Success
+              examples:
+                Send transaction:
+                  value:
+                    message: Send Transaction Success
+    parameters:
+      - name: id
+        description: payment account id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '1715407506'
+  /api/transactions/payment-account/{id}/withdraw:
+    post:
+      security:
+        - sAccessToken: []
+      summary: Withdraw transaction
+      description: Withdraw transaction
+      operationId: withdrawTransaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  example: 100
+                currency:
+                  type: string
+                  example: JPY
+            examples:
+              Withdraw transaction:
+                value:
+                  amount: 100
+                  currency: JPY
+      responses:
+        '200':
+          description: Withdraw transaction
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Sat, 11 May 2024 06:19:01 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=72
+            access-control-allow-credentials:
+              schema:
+                type: string
+                example: 'true'
+            access-control-allow-origin:
+              schema:
+                type: string
+                example: http://localhost:8081
+            content-length:
+              schema:
+                type: string
+                example: '42'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Withdraw Transaction Success
+              examples:
+                Withdraw transaction:
+                  value:
+                    message: Withdraw Transaction Success
+    parameters:
+      - name: id
+        description: payment account id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '1715407506'
+components:
+  securitySchemes:
+    sAccessToken:
+      type: apiKey
+      in: cookie
+      name: sAccessToken
+tags: []

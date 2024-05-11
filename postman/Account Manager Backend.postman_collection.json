@@ -1,0 +1,921 @@
+{
+	"info": {
+		"_postman_id": "8a6ba94f-f479-4aa1-bcb0-eb4b6a956f14",
+		"name": "Account Manager Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34586263"
+	},
+	"item": [
+		{
+			"name": "Payment Accounts",
+			"item": [
+				{
+					"name": "List all transactions in user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{account_manager_uri}}/api/user/transactions",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List all transactions in user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{account_manager_uri}}/api/user/transactions",
+									"host": [
+										"{{account_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"transactions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8080"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "1024"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 07:51:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"result\": {\n        \"1715407506\": [\n            {\n                \"id\": \"1715407798\",\n                \"amount\": 1000,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:09:58.297Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715407812\",\n                \"amount\": 1000,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:10:11.536Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715407856\",\n                \"amount\": 1000,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:10:55.595Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715407879\",\n                \"amount\": 1000,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:11:18.621Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715407883\",\n                \"amount\": 1000,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:11:23.298Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715407903\",\n                \"amount\": 1000,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:11:43.395Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715407922\",\n                \"amount\": 10,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:12:01.836Z\",\n                \"currency\": \"USD\"\n            },\n            {\n                \"id\": \"1715407970\",\n                \"amount\": 100,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:12:49.539Z\",\n                \"currency\": \"JPY\"\n            },\n            {\n                \"id\": \"1715408341\",\n                \"amount\": 100,\n                \"status\": \"success\",\n                \"timestamp\": \"2024-05-11T06:19:01.183Z\",\n                \"currency\": \"JPY\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List payment accounts in user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{account_manager_uri}}/api/user/payment-account",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"payment-account"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List payment accounts in user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{account_manager_uri}}/api/user/payment-account",
+									"host": [
+										"{{account_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"payment-account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8080"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "105"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 06:17:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"result\": [\n        {\n            \"id\": \"1715407506\",\n            \"type\": \"Debit JPY\",\n            \"amount\": 7457.85,\n            \"currency\": \"JPY\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List transactions in payment account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{account_manager_uri}}/api/user/payment-account/:id/transactions",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"payment-account",
+								":id",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1715407506"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List transactions in payment account",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{account_manager_uri}}/api/user/payment-account/:id/transactions",
+									"host": [
+										"{{account_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"payment-account",
+										":id",
+										"transactions"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1715407506"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8080"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "1333"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 07:39:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"result\": [\n        {\n            \"id\": \"1715407798\",\n            \"amount\": \"1000\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:09:58.297Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715407812\",\n            \"amount\": \"1000\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:10:11.536Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715407856\",\n            \"amount\": \"1000\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:10:55.595Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715407879\",\n            \"amount\": \"1000\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:11:18.621Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715407883\",\n            \"amount\": \"1000\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:11:23.298Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715407903\",\n            \"amount\": \"1000\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:11:43.395Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715407922\",\n            \"amount\": \"10\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:12:01.836Z\",\n            \"currency\": \"USD\"\n        },\n        {\n            \"id\": \"1715407970\",\n            \"amount\": \"100\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:12:49.539Z\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": \"1715408341\",\n            \"amount\": \"100\",\n            \"payment_account_id\": \"1715407506\",\n            \"status\": \"success\",\n            \"timestamp\": \"2024-05-11T06:19:01.183Z\",\n            \"currency\": \"JPY\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get payment account by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{account_manager_uri}}/api/user/payment-account/:id",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"payment-account",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1715407506"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get payment account by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{account_manager_uri}}/api/user/payment-account/:id",
+									"host": [
+										"{{account_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"payment-account",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1715407506"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8080"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "103"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 06:17:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"result\": {\n        \"id\": \"1715407506\",\n        \"type\": \"Debit JPY\",\n        \"amount\": 7457.85,\n        \"currency\": \"JPY\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create payment account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Debit JPY\",\r\n    \"currency\": \"JPY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{account_manager_uri}}/api/user/payment-account",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"payment-account"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create payment account",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Debit JPY\",\r\n    \"currency\": \"JPY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{account_manager_uri}}/api/user/payment-account",
+									"host": [
+										"{{account_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"payment-account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8080"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "66"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 05:48:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Created payment account\",\n    \"result\": {\n        \"id\": \"1715406521\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const accessToken = pm.response.headers.get('st-access-token');\r",
+							"const refreshToken = pm.response.headers.get('st-access-token');\r",
+							"pm.environment.set(\"access_token\", accessToken);\r",
+							"pm.environment.set(\"refresh_token\", refreshToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "st-auth-mode",
+						"value": "cookie",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"formFields\": [\r\n        {\r\n            \"id\": \"email\",\r\n            \"value\": \"melissa@gmail.com\"\r\n        },\r\n        {\r\n            \"id\": \"password\",\r\n            \"value\": \"MellMel123\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{account_manager_uri}}/api/signin",
+					"host": [
+						"{{account_manager_uri}}"
+					],
+					"path": [
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "st-auth-mode",
+								"value": "cookie",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"formFields\": [\r\n        {\r\n            \"id\": \"email\",\r\n            \"value\": \"melissa@gmail.com\"\r\n        },\r\n        {\r\n            \"id\": \"password\",\r\n            \"value\": \"MellMel123\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{account_manager_uri}}/api/signin",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-origin",
+							"value": "http://0.0.0.0:8080"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "front-token",
+							"value": "eyJ1aWQiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJhdGUiOjE3MTU0MTM1NjcwMDAsInVwIjp7ImlhdCI6MTcxNTQwOTk2NywiZXhwIjoxNzE1NDEzNTY3LCJzdWIiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwic2Vzc2lvbkhhbmRsZSI6Ijg4NTNmMWJhLTU2OGMtNDVkNS1hMWZiLWRhOTBiNmUwMzhlYSIsInJlZnJlc2hUb2tlbkhhc2gxIjoiYWNiZjI1ZDg5NjE4ZTljZjJhNGY4YzM0Y2E3NDAxNTUzYmZlNDc1MmQ5MzFiZTc1NmYwMTBiZjY4MGM1MWVmZiIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjpudWxsLCJhbnRpQ3NyZlRva2VuIjpudWxsLCJpc3MiOiJodHRwOi8vMC4wLjAuMDo4MDgwL2FwaSJ9fQ=="
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "front-token"
+						},
+						{
+							"key": "set-cookie",
+							"value": "sAccessToken=eyJraWQiOiJkLTE3MTU0MDc0OTM4NTEiLCJ0eXAiOiJKV1QiLCJ2ZXJzaW9uIjoiNSIsImFsZyI6IlJTMjU2In0.eyJpYXQiOjE3MTU0MDk5NjcsImV4cCI6MTcxNTQxMzU2Nywic3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwidElkIjoicHVibGljIiwicnN1YiI6ImZjZThkODZhLTUyYzYtNDM0MC1iZDhmLWM2OWQxMGY2MzYzZCIsInNlc3Npb25IYW5kbGUiOiI4ODUzZjFiYS01NjhjLTQ1ZDUtYTFmYi1kYTkwYjZlMDM4ZWEiLCJyZWZyZXNoVG9rZW5IYXNoMSI6ImFjYmYyNWQ4OTYxOGU5Y2YyYTRmOGMzNGNhNzQwMTU1M2JmZTQ3NTJkOTMxYmU3NTZmMDEwYmY2ODBjNTFlZmYiLCJwYXJlbnRSZWZyZXNoVG9rZW5IYXNoMSI6bnVsbCwiYW50aUNzcmZUb2tlbiI6bnVsbCwiaXNzIjoiaHR0cDovLzAuMC4wLjA6ODA4MC9hcGkifQ.DAftdonsVaoTFDp2Dr5Qu05zzFBX7IEQfzU90i2oSOpBlCYtVm7Tnv3gHdaLCL5UCcRgXykpbV0umwceAdlChuf3l0JI1lRRcXMqiAUT9bZBReyxmeMhVJmCtXhYNnTpD5XBHzolgKhVWxPO6KLmmQqgoxJ0mMY2NGZDZR9zOHCbW4TWa1rdxWyy7KZ0v3vf32X21_HR_AptSoMdBSO2RYpvhidkSoL89MJzJ0-_s-0QUVxCj7JS_bf1nlUDD0BEnEfGiEDI2-feoK7YqeiWSFquEkEiXxZQd2AQ3-LQGaIYW5144NInQUcrF2_0Oqv1QECEtrmlil8n0QWuPVwEWg; Path=/; Expires=Mon, 17 Apr 2124 06:46:07 GMT; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "set-cookie",
+							"value": "sRefreshToken=SQe9p9h4rBxXEaD6ml3ZOpukLI3lbWGoFnHihLkgEM75QkS3Sp2n2ooJPIp6GT%2BE006etKna4lCpdSE%2FLA7T5pEnyXK%2BPcNgh4%2Fjh3Dp0nR5R0ctY6Q8CuzYB6OjFEdjfb5P90Ywa%2BbNAfJZi9qdt6sbCR2%2FrCJGQzUZ2SQbyDlzh0CQUiDZqjNiw6nScIfIiCqaR4fSSRXddrEOFhw3bEIUTDuPp%2FWzuZHuSCNmCd6kBLu6M6LSa8KPd6MO4VefuLVjD15wnjnQRMRA8SLJ.9142c1057153b1a38cc592e2f6a57aa46bef37f4161885321f6ec49e5e9c2836.V2; Path=/api/session/refresh; Expires=Mon, 19 Aug 2024 06:46:07 GMT; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "400"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 11 May 2024 06:46:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"user\": {\n        \"id\": \"fce8d86a-52c6-4340-bd8f-c69d10f6363d\",\n        \"isPrimaryUser\": false,\n        \"tenantIds\": [\n            \"public\"\n        ],\n        \"emails\": [\n            \"melissa@gmail.com\"\n        ],\n        \"phoneNumbers\": [],\n        \"thirdParty\": [],\n        \"loginMethods\": [\n            {\n                \"recipeId\": \"emailpassword\",\n                \"recipeUserId\": \"fce8d86a-52c6-4340-bd8f-c69d10f6363d\",\n                \"tenantIds\": [\n                    \"public\"\n                ],\n                \"email\": \"melissa@gmail.com\",\n                \"timeJoined\": 1715407498667,\n                \"verified\": false\n            }\n        ],\n        \"timeJoined\": 1715407498667\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"formFields\": [\r\n        {\r\n            \"id\": \"email\",\r\n            \"value\": \"melissa@gmail.com\"\r\n        },\r\n        {\r\n            \"id\": \"password\",\r\n            \"value\": \"MellMel123\"\r\n        },\r\n        {\r\n            \"id\": \"fullname\",\r\n            \"value\": \"Mellisa Croft\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{account_manager_uri}}/api/signup",
+					"host": [
+						"{{account_manager_uri}}"
+					],
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Signup",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"formFields\": [\r\n        {\r\n            \"id\": \"email\",\r\n            \"value\": \"melissa@gmail.com\"\r\n        },\r\n        {\r\n            \"id\": \"password\",\r\n            \"value\": \"MellMel123\"\r\n        },\r\n        {\r\n            \"id\": \"fullname\",\r\n            \"value\": \"Mellisa Croft\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{account_manager_uri}}/api/signup",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-origin",
+							"value": "http://localhost:8080"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "front-token",
+							"value": "eyJ1aWQiOiJjM2U2MWZjOC1kODg3LTRjNTItODE1NS1lY2YwMjBhMmNlMmIiLCJhdGUiOjE3MTUzMjMzMzEwMDAsInVwIjp7ImlhdCI6MTcxNTMxOTczMSwiZXhwIjoxNzE1MzIzMzMxLCJzdWIiOiJjM2U2MWZjOC1kODg3LTRjNTItODE1NS1lY2YwMjBhMmNlMmIiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiYzNlNjFmYzgtZDg4Ny00YzUyLTgxNTUtZWNmMDIwYTJjZTJiIiwic2Vzc2lvbkhhbmRsZSI6ImIxMmU0N2EzLWE3ZWEtNGJjZS1hMjE3LTdkZjM5ZGZlY2E0YiIsInJlZnJlc2hUb2tlbkhhc2gxIjoiODc3MGM5MTM0Y2Q5ZmM3NmFmYzE4ZDI0MTZmMmUzNDE0OGMwNDdiNDU0ZjE4ODhlNWI3NWE3Y2U2OTA0MTdkYiIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjpudWxsLCJhbnRpQ3NyZlRva2VuIjpudWxsLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpIn19"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "front-token, st-access-token, st-refresh-token"
+						},
+						{
+							"key": "st-access-token",
+							"value": "eyJraWQiOiJkLTE3MTUzMTY2OTczOTgiLCJ0eXAiOiJKV1QiLCJ2ZXJzaW9uIjoiNSIsImFsZyI6IlJTMjU2In0.eyJpYXQiOjE3MTUzMTk3MzEsImV4cCI6MTcxNTMyMzMzMSwic3ViIjoiYzNlNjFmYzgtZDg4Ny00YzUyLTgxNTUtZWNmMDIwYTJjZTJiIiwidElkIjoicHVibGljIiwicnN1YiI6ImMzZTYxZmM4LWQ4ODctNGM1Mi04MTU1LWVjZjAyMGEyY2UyYiIsInNlc3Npb25IYW5kbGUiOiJiMTJlNDdhMy1hN2VhLTRiY2UtYTIxNy03ZGYzOWRmZWNhNGIiLCJyZWZyZXNoVG9rZW5IYXNoMSI6Ijg3NzBjOTEzNGNkOWZjNzZhZmMxOGQyNDE2ZjJlMzQxNDhjMDQ3YjQ1NGYxODg4ZTViNzVhN2NlNjkwNDE3ZGIiLCJwYXJlbnRSZWZyZXNoVG9rZW5IYXNoMSI6bnVsbCwiYW50aUNzcmZUb2tlbiI6bnVsbCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaSJ9.WD4Uae0YPOw3GwM2IVirovTBZ1HRdcHmlaGewnJ5dOxmIHPOmw-qcq_2Og-p4FpnNxTyvs9qAcyEiboTVhXbffCn-fmaKxVGj47gijXsdWOICAt4INaM-zF57FF1CCNYetckmuYjoUJaJW900WVv3GNMXd630hjNfwdunBj7CzvovpkCNzcZrY9xV-1b92hHQ5zg_jUpIxuggIGXfEJUV4vFRtbpAOWj3LqjVIpoxCMyP0oLtQtm6trKBNeBhFLyolxJXweI4Ov4b-ALrJTacB2rPJ3TW1C4Ba8KSMZO5j4PRr6GoYDuB0BrdUEsyhylvdKvhdk-evHqQGCXz-TZmw"
+						},
+						{
+							"key": "st-refresh-token",
+							"value": "VgUqdCrilhgPQRgwQCmEw3VYwm13PNaX6dhkfcAqsbulZOJbWfpSAejjOmnlI3gQocVI/GJr6080pgQgfLrVaT5IE4980IEZGjvQzj6c87UT1K5ZtSaHoludrbv+vD+j2gYgNnMlZ57MchB4OQdyK9GKrEFCF11oLZsZuTwhqhNxl9LOYJuAk9v/jXXRB0CLaJZXZGtiN41oiM67oyUZ8OJcXDWNl9MwM8PZqgj+aykVZzyEE/zVgmJ5j0LUvgeZiCgds+/M8IX0ZZMMiLvg.94758038f808b7ddf24adfa075e8bd8f91471e6ac02015c102c987cc445b78ce.V2"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "400"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 10 May 2024 05:42:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"user\": {\n        \"id\": \"c3e61fc8-d887-4c52-8155-ecf020a2ce2b\",\n        \"isPrimaryUser\": false,\n        \"tenantIds\": [\n            \"public\"\n        ],\n        \"emails\": [\n            \"melissa@gmail.com\"\n        ],\n        \"phoneNumbers\": [],\n        \"thirdParty\": [],\n        \"loginMethods\": [\n            {\n                \"recipeId\": \"emailpassword\",\n                \"recipeUserId\": \"c3e61fc8-d887-4c52-8155-ecf020a2ce2b\",\n                \"tenantIds\": [\n                    \"public\"\n                ],\n                \"email\": \"melissa@gmail.com\",\n                \"timeJoined\": 1715319731693,\n                \"verified\": false\n            }\n        ],\n        \"timeJoined\": 1715319731693\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Refresh Session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const accessToken = pm.response.headers.get('st-access-token');\r",
+							"const refreshToken = pm.response.headers.get('st-access-token');\r",
+							"pm.environment.set(\"access_token\", accessToken);\r",
+							"pm.environment.set(\"refresh_token\", refreshToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{account_manager_uri}}/api/session/refresh",
+					"host": [
+						"{{account_manager_uri}}"
+					],
+					"path": [
+						"api",
+						"session",
+						"refresh"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Refresh Session",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{account_manager_uri}}/api/session/refresh",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"session",
+								"refresh"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-origin",
+							"value": "http://localhost:8080"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "front-token",
+							"value": "eyJ1aWQiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJhdGUiOjE3MTU0MTQ4NTgwMDAsInVwIjp7ImlhdCI6MTcxNTQxMTI1OCwiZXhwIjoxNzE1NDE0ODU4LCJzdWIiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwic2Vzc2lvbkhhbmRsZSI6IjAwNGVkZTA5LWE1NDctNGMzZS1hZmI3LWI5M2M3NGEwOTFhYSIsInJlZnJlc2hUb2tlbkhhc2gxIjoiNTI1MmVlYzk1OTU3ZTM4ZmZlZmM3YjZiZWVjNGNkODU3ZDFkY2ZiY2MyZjdlZTA3ZWRiMGJhYjkzYTg5OWNhYyIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjoiMDUwYmI4NzY2YTEyYWQzNDAwYzI0ZDUxZTY0ZmI4MDE0M2QzYmFlMDRlMTM2MGJhYjcxM2Q1NWI3MjE2OTE0NyIsImFudGlDc3JmVG9rZW4iOm51bGwsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGkifX0="
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "front-token"
+						},
+						{
+							"key": "set-cookie",
+							"value": "sAccessToken=eyJraWQiOiJkLTE3MTU0MDc0OTM4NTEiLCJ0eXAiOiJKV1QiLCJ2ZXJzaW9uIjoiNSIsImFsZyI6IlJTMjU2In0.eyJpYXQiOjE3MTU0MTEyNTgsImV4cCI6MTcxNTQxNDg1OCwic3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwidElkIjoicHVibGljIiwicnN1YiI6ImZjZThkODZhLTUyYzYtNDM0MC1iZDhmLWM2OWQxMGY2MzYzZCIsInNlc3Npb25IYW5kbGUiOiIwMDRlZGUwOS1hNTQ3LTRjM2UtYWZiNy1iOTNjNzRhMDkxYWEiLCJyZWZyZXNoVG9rZW5IYXNoMSI6IjUyNTJlZWM5NTk1N2UzOGZmZWZjN2I2YmVlYzRjZDg1N2QxZGNmYmNjMmY3ZWUwN2VkYjBiYWI5M2E4OTljYWMiLCJwYXJlbnRSZWZyZXNoVG9rZW5IYXNoMSI6IjA1MGJiODc2NmExMmFkMzQwMGMyNGQ1MWU2NGZiODAxNDNkM2JhZTA0ZTEzNjBiYWI3MTNkNTViNzIxNjkxNDciLCJhbnRpQ3NyZlRva2VuIjpudWxsLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpIn0.NKt4avEP-sbE9QlMT6eVmiGzaA2eTeCKzCGKA5g6kMdIbPAW8vyxbHUgpBLsAipZVnDsGi57gSoE7XjZqxGbBFAr3IQa9hmv8N1duEHOHsExQJn0_xdp3EeUWo9HzCn4LABt2W5DW-w1l2yPlLe8TZYalmgdJdNEnVu0vyE9QcOLBcaVMqa4eu47CVbkRPlZQj6ISDUtu-5CP27Q4_dnZOvfzne_prXQHA7m2FVfBqX1z_YWeGwJ6KYfBFtrmZRthrr8GRv2VPNLpRIEF73rAwrwEsA3-Jzw4c8TiZgMiBXyLXrmXkP7INx09BCK1wrhrCVxOC3xUhThkzeA54xF3A; Path=/; Expires=Mon, 17 Apr 2124 07:07:38 GMT; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "set-cookie",
+							"value": "sRefreshToken=zUbM0546mqJgXe73Y25jrFto%2FOVrms3x2Y92f3uhg4%2FrtPDuP2d%2BxxL6NOO82CxQRfDwKnKq%2FOJNkupBRg8LUwRu%2BIEPP6bU%2FL0PkXDRsiNfBjmFZ9M%2BQ%2FEs11tT9UmvnHpVm8PGiq0utU7dilNz6SjdEP3rBanFdO%2Bxgjezgv3PFgybU5%2FGMEHzA5eGpps2xxmrfV2YxLCLdrnLZsXOuFQOTGjcgqUgD2cpSer%2F37V71XpYJeOmZOU0yOwNC422M5h%2FvleJV08sY9o4OSN%2Bb%2BIlPBYC%2BA%2BCZeRzaIMRu%2FYHp8UFoqMDjDsdIfkUXJptYhRfLDwGBSy3XBCeffvxmPSTpo3wBlSSIyo3IJTX3XJylRKPpA8Kwz1JwU6wN1MDzuWUUpBARdkqXvVp.c80866d16dfba26e98f3274cb798f7bb51eafc7bd33a66e01e0f4df312e2266b.V2; Path=/api/session/refresh; Expires=Mon, 19 Aug 2024 07:07:38 GMT; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "2"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 11 May 2024 07:07:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				}
+			]
+		},
+		{
+			"name": "Signout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const accessToken = pm.response.headers.get('st-access-token');\r",
+							"const refreshToken = pm.response.headers.get('st-access-token');\r",
+							"pm.environment.set(\"access_token\", accessToken);\r",
+							"pm.environment.set(\"refresh_token\", refreshToken);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "st-auth-mode",
+						"value": "cookie",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{account_manager_uri}}/api/signout",
+					"host": [
+						"{{account_manager_uri}}"
+					],
+					"path": [
+						"api",
+						"signout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Signout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "st-auth-mode",
+								"value": "cookie",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{account_manager_uri}}/api/signout",
+							"host": [
+								"{{account_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"signout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-origin",
+							"value": "http://localhost:8080"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "set-cookie",
+							"value": "sAccessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "set-cookie",
+							"value": "sRefreshToken=; Path=/api/session/refresh; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "front-token",
+							"value": "remove"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "front-token"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "15"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 10 May 2024 15:54:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\"\n}"
+				}
+			]
+		}
+	]
+}
