@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact: {}
 servers:
-  - url: http://localhost:8080
+  - url: http://127.0.0.1:8080
 paths:
   /api/user/transactions:
     get:
@@ -170,7 +170,8 @@ paths:
                           status: success
                           timestamp: '2024-05-11T06:19:01.183Z'
       security:
-        - sAccessToken: []
+        - accessTokenCookie: []
+        - accessTokenBearer: []
   /api/user/payment-account:
     get:
       parameters:
@@ -523,7 +524,8 @@ paths:
                         status: success
                         timestamp: '2024-05-11T06:19:01.183Z'
       security:
-        - sAccessToken: []
+        - accessTokenCookie: []
+        - accessTokenBearer: []
     parameters:
       - name: id
         description: payment account id
@@ -600,7 +602,8 @@ paths:
                       id: '1715407506'
                       type: Debit JPY
       security:
-        - sAccessToken: []
+        - accessTokenCookie: []
+        - accessTokenBearer: []
     parameters:
       - name: id
         in: path
@@ -618,7 +621,7 @@ paths:
           in: header
           schema:
             type: string
-            example: cookie
+            example: header
       requestBody:
         content:
           application/json:
@@ -980,7 +983,8 @@ paths:
   /api/session/refresh:
     post:
       security:
-        - sRefreshToken: []
+        - refreshTokenCookie: []
+        - refreshTokenBearer: []
       summary: Refresh Session
       description: Refresh Session
       operationId: refreshSession
@@ -1039,7 +1043,8 @@ paths:
   /api/signout:
     post:
       security:
-        - sAccessToken: []
+        - accessTokenCookie: []
+        - accessTokenBearer: []
       summary: Signout
       description: Signout
       operationId: signout
@@ -1048,7 +1053,7 @@ paths:
           in: header
           schema:
             type: string
-            example: cookie
+            example: header
       responses:
         '200':
           description: Signout
@@ -1105,11 +1110,19 @@ paths:
                     status: OK
 components:
   securitySchemes:
-    sAccessToken:
+    accessTokenBearer:
+      description: Returned as the "st-access-token" header from sign-in and refresh endpoints and present on requests that update the access token payload
+      type: http
+      scheme: bearer
+    refreshTokenBearer:
+      description: Returned as the "st-refresh-token" header from sign-in and refresh endpoints
+      scheme: bearer
+      type: http
+    accessTokenCookie:
       type: apiKey
       in: cookie
       name: sAccessToken  
-    sRefreshToken:
+    refreshTokenCookie:
       type: apiKey
       in: cookie
       name: sRefreshToken  

@@ -1,13 +1,13 @@
 {
 	"info": {
 		"_postman_id": "8a6ba94f-f479-4aa1-bcb0-eb4b6a956f14",
-		"name": "Account Manager Backend",
+		"name": "ConcreteAI - Backend Assignment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34586263"
 	},
 	"item": [
 		{
-			"name": "Payment Accounts",
+			"name": "Account Manager",
 			"item": [
 				{
 					"name": "List all transactions in user",
@@ -477,6 +477,257 @@
 			]
 		},
 		{
+			"name": "Payment Manager",
+			"item": [
+				{
+					"name": "Send transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 10,\r\n    \"currency\": \"USD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/send",
+							"host": [
+								"{{payment_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"payment-account",
+								":id",
+								"send"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1715407506"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Send transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": 10,\r\n    \"currency\": \"USD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/send",
+									"host": [
+										"{{payment_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"payment-account",
+										":id",
+										"send"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1715407506"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8081"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 06:12:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Send Transaction Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Withdraw transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 100,\r\n    \"currency\": \"JPY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/withdraw",
+							"host": [
+								"{{payment_manager_uri}}"
+							],
+							"path": [
+								"api",
+								"transactions",
+								"payment-account",
+								":id",
+								"withdraw"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1715407506"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Withdraw transaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": 100,\r\n    \"currency\": \"JPY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{payment_manager_uri}}/api/transactions/payment-account/:id/withdraw",
+									"host": [
+										"{{payment_manager_uri}}"
+									],
+									"path": [
+										"api",
+										"transactions",
+										"payment-account",
+										":id",
+										"withdraw"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1715407506"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "access-control-allow-origin",
+									"value": "http://localhost:8081"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "42"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 May 2024 06:19:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Withdraw Transaction Success\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Login",
 			"event": [
 				{
@@ -484,7 +735,7 @@
 					"script": {
 						"exec": [
 							"const accessToken = pm.response.headers.get('st-access-token');\r",
-							"const refreshToken = pm.response.headers.get('st-access-token');\r",
+							"const refreshToken = pm.response.headers.get('st-refresh-token');\r",
 							"pm.environment.set(\"access_token\", accessToken);\r",
 							"pm.environment.set(\"refresh_token\", refreshToken);"
 						],
@@ -495,13 +746,7 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "st-auth-mode",
-						"value": "cookie",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"formFields\": [\r\n        {\r\n            \"id\": \"email\",\r\n            \"value\": \"melissa@gmail.com\"\r\n        },\r\n        {\r\n            \"id\": \"password\",\r\n            \"value\": \"MellMel123\"\r\n        }\r\n    ]\r\n}",
@@ -720,10 +965,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"const accessToken = pm.response.headers.get('st-access-token');\r",
-							"const refreshToken = pm.response.headers.get('st-access-token');\r",
-							"pm.environment.set(\"access_token\", accessToken);\r",
-							"pm.environment.set(\"refresh_token\", refreshToken);"
+							"if (pm.response.code === 200) {\r",
+							"    const accessToken = pm.response.headers.get('st-access-token');\r",
+							"    const refreshToken = pm.response.headers.get('st-access-token');\r",
+							"    pm.environment.set(\"access_token\", accessToken);\r",
+							"    pm.environment.set(\"refresh_token\", refreshToken);\r",
+							"}"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -731,8 +978,25 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{refresh_token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "rid",
+						"value": "thirdparty",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"url": {
 					"raw": "{{account_manager_uri}}/api/session/refresh",
 					"host": [

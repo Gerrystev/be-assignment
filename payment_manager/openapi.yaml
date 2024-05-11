@@ -1,15 +1,13 @@
 openapi: 3.0.3
 info:
-  title: Payment Manager Backend
+  title: Payment Manager
   version: 1.0.0
   contact: {}
 servers:
-  - url: http://0.0.0.0:8081
+  - url: http://127.0.0.1:8081
 paths:
   /api/transactions/payment-account/{id}/send:
     post:
-      security:
-        - sAccessToken: []
       summary: Send transaction
       description: Send transaction
       operationId: sendTransaction
@@ -70,9 +68,11 @@ paths:
                 Send transaction:
                   value:
                     message: Send Transaction Success
+      security:
+        - accessTokenBearer: []
+        - accessTokenCookie: []
     parameters:
       - name: id
-        description: payment account id
         in: path
         required: true
         schema:
@@ -80,8 +80,6 @@ paths:
           example: '1715407506'
   /api/transactions/payment-account/{id}/withdraw:
     post:
-      security:
-        - sAccessToken: []
       summary: Withdraw transaction
       description: Withdraw transaction
       operationId: withdrawTransaction
@@ -142,9 +140,11 @@ paths:
                 Withdraw transaction:
                   value:
                     message: Withdraw Transaction Success
+      security:
+        - accessTokenBearer: []
+        - accessTokenCookie: []
     parameters:
       - name: id
-        description: payment account id
         in: path
         required: true
         schema:
@@ -152,8 +152,12 @@ paths:
           example: '1715407506'
 components:
   securitySchemes:
-    sAccessToken:
+    accessTokenBearer:
+      description: Returned as the "st-access-token" header from sign-in and refresh endpoints and present on requests that update the access token payload
+      type: http
+      scheme: bearer
+    accessTokenCookie:
       type: apiKey
       in: cookie
-      name: sAccessToken
+      name: sAccessToken  
 tags: []

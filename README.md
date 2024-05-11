@@ -12,6 +12,12 @@ Read apis for these features in:
 - [Openapi Swagger for Account Manager](/account_manager/openapi.yaml)
 - [Openapi Swagger for Payment Manager](/payment_manager/openapi.yaml)
 
+**Note**
+To authorise, you need to:
+- Request `/api/signin` or `/api/session/refresh` in account manager
+- Get its access token and refresh token from `st-access-token` header
+- Apply at swagger authorize `accessTokenBearer` and `refreshTokenBearer`
+
 
 ## About this project
 This repository has these following directories:
