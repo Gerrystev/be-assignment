@@ -7,17 +7,15 @@ export interface ICreatePaymentAccount extends SessionRequest {
     }
 }
 
-export interface IPaymentAccount extends SessionRequest {
+export interface IPaymentAccount extends IListQuery {
     params: {
         id: string
     }
 }
 
-export interface ITopupPaymentAccount extends SessionRequest {
-    body: {
-        amount: number
-    },
-    params: {
-        id: string
+export interface IListQuery extends SessionRequest {
+    query: {
+        offset?: string,
+        limit?: string
     }
 }

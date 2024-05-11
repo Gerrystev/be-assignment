@@ -2,11 +2,10 @@ import { FastifyReply } from 'fastify'
 import { prisma } from '../helpers/utils'
 import { BadRequestError, NotFoundError } from '../helpers/errors'
 import { STANDARD, ERROR404 } from '../helpers/constants'
-import { SessionRequest } from "supertokens-node/framework/fastify";
-import { ICreatePaymentAccount, IPaymentAccount, ITopupPaymentAccount } from 'interfaces/payment-accounts'
+import { ICreatePaymentAccount, IListQuery, IPaymentAccount } from 'interfaces/payment-accounts'
 import validateCurrencyCode from 'validate-currency-code';
 
-export const listTransactionsByUser = async (request: SessionRequest, reply: FastifyReply) => {
+export const listTransactionsByUser = async (request: IListQuery, reply: FastifyReply) => {
   const userId = request.session!.getUserId();
     
   const transactions = await prisma.transactions.findMany({
@@ -54,8 +53,10 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
   })
 }
 
-export const listPaymentAccounts = async (request: SessionRequest, reply: FastifyReply) => {
+export const listPaymentAccounts = async (request: IListQuery, reply: FastifyReply) => {
   const userId = request.session!.getUserId();
+  const limit = request.query.limit? parseInt(request.query.limit) : undefined;
+  const offset = request.query.offset? parseInt(request.query.offset) : undefined;
     
   const pa = await prisma.payment_accounts.findMany({
     relationLoadStrategy: 'join',
@@ -70,7 +71,9 @@ export const listPaymentAccounts = async (request: SessionRequest, reply: Fastif
       user_id: {
         equals: userId
       }
-    }
+    },
+    skip: offset,
+    take: limit
   });
   const paymentAccounts = pa.map(o => {
     const res =  {
@@ -187,6 +190,8 @@ export const deletePaymentAccount = async (request: IPaymentAccount, reply: Fast
 export const listTransactionsByPaymentAccountId = async (request: IPaymentAccount, reply: FastifyReply) => {
   const userId = request.session!.getUserId();
   const id = request.params.id;
+  const limit = request.query.limit? parseInt(request.query.limit) : undefined;
+  const offset = request.query.offset? parseInt(request.query.offset) : undefined;
 
   const transactions = await prisma.transactions.findMany({
     relationLoadStrategy: 'join',
@@ -208,7 +213,9 @@ export const listTransactionsByPaymentAccountId = async (request: IPaymentAccoun
         },
         id: BigInt(id)
       }
-    }
+    },
+    skip: offset,
+    take: limit
   });
   const result = transactions.map(o => {
     return {
