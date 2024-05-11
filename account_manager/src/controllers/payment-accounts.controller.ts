@@ -30,14 +30,21 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
       }
     }
   })
-  const result = transactions.map(o => {
-    return {
+
+  let result = {};
+  transactions.forEach(o => {
+    const paymentAccountId = o.payment_account_id.toString();
+    const parsed = {
       id: o.id.toString(),
       amount: o.amount.toNumber(),
-      payment_account_id: o.payment_account_id.toString(),
       status: o.status,
       timestamp: o.timestamp,
       currency: o.currency
+    };
+    if (!result[paymentAccountId]) {
+      result[paymentAccountId] = [parsed];
+    } else {
+      result[paymentAccountId].push(parsed);
     }
   })
   
