@@ -25,6 +25,7 @@ const startServer = async () => {
     server.setErrorHandler(errorHandler());
     
     server.register(transactionRouter, { prefix: '/api/transactions' })
+
     server.setErrorHandler((error, request, reply) => {
       server.log.error(error);
       if (error instanceof FastifyError) {

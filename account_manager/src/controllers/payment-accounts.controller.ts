@@ -1,9 +1,10 @@
 import { FastifyReply } from 'fastify'
 import { prisma } from '../helpers/utils'
-import { NotFoundError } from '../helpers/errors'
+import { BadRequestError, NotFoundError } from '../helpers/errors'
 import { STANDARD, ERROR404 } from '../helpers/constants'
 import { SessionRequest } from "supertokens-node/framework/fastify";
 import { ICreatePaymentAccount, IPaymentAccount, ITopupPaymentAccount } from 'interfaces/payment-accounts'
+import validateCurrencyCode from 'validate-currency-code';
 
 export const listTransactionsByUser = async (request: SessionRequest, reply: FastifyReply) => {
   const userId = request.session!.getUserId();
@@ -32,10 +33,11 @@ export const listTransactionsByUser = async (request: SessionRequest, reply: Fas
   const result = transactions.map(o => {
     return {
       id: o.id.toString(),
-      amount: o.amount,
+      amount: o.amount.toNumber(),
       payment_account_id: o.payment_account_id.toString(),
       status: o.status,
-      timestamp: o.timestamp
+      timestamp: o.timestamp,
+      currency: o.currency
     }
   })
   
@@ -66,8 +68,10 @@ export const listPaymentAccounts = async (request: SessionRequest, reply: Fastif
   const paymentAccounts = pa.map(o => {
     const res =  {
       ...o,
-      id: o.id.toString()
+      id: o.id.toString(),
+      amount: o.amount.toNumber()
     };
+    delete res.user_id;
     delete res.user;
     return res;
   })
@@ -110,12 +114,16 @@ export const getPaymentAccountById = async (request: IPaymentAccount, reply: Fas
   const pa = await getPaById(userId, paymentAccountId);
   delete pa.user;
 
+  const result = {
+    ...pa,
+    id: pa.id.toString(),
+    amount: pa.amount.toNumber()
+  };
+  delete result.user_id;
+
   reply.code(STANDARD.SUCCESS).send({
     message: "Success",
-    result: {
-      ...pa,
-      id: pa.id.toString()
-    }
+    result
   })
 }
 
@@ -123,13 +131,18 @@ export const createPaymentAccount = async (request: ICreatePaymentAccount, reply
   const userId = request.session!.getUserId();
   const body = request.body;
 
+  if(!validateCurrencyCode(body.currency)) {
+    throw new BadRequestError("Invalid currency code")
+  }
+
   const id = Math.round(new Date().getTime()/1000);
   const paymentAccount = await prisma.payment_accounts.create({
     data: {
       id,
       type: body.type,
       amount: 0,
-      user_id: userId
+      user_id: userId,
+      currency: body.currency
     }
   });
 
@@ -196,7 +209,8 @@ export const listTransactionsByPaymentAccountId = async (request: IPaymentAccoun
       amount: o.amount,
       payment_account_id: o.payment_account_id.toString(),
       status: o.status,
-      timestamp: o.timestamp
+      timestamp: o.timestamp,
+      currency: o.currency
     }
   })
   

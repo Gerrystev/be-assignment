@@ -3,6 +3,7 @@ import { SessionRequest } from "supertokens-node/framework/fastify";
 export interface ICreatePaymentAccount extends SessionRequest {
     body: {
         type: string,
+        currency: string
     }
 }
 
