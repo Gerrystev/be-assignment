@@ -548,9 +548,10 @@ model payment_accounts {
   id                   BigInt                            @id
   type                 String
   amount               Decimal
+  currency             String                            @db.VarChar(3) @default("USD")
   user                 all_auth_recipe_users             @relation(fields: [user_id], references: [user_id])
   user_id              String
-  to_transactions      transactions[]                     @relation("to_payment_account")
+  to_transactions      transactions[]                    @relation("to_payment_account")
 
   @@schema("public")
 }
@@ -558,6 +559,7 @@ model payment_accounts {
 model transactions {
   id                           BigInt                         @id
   amount                       Decimal
+  currency                     String                         @db.VarChar(3)  @default("USD")
   timestamp                    DateTime
   payment_account              payment_accounts               @relation("to_payment_account", fields: [payment_account_id], references: [id])
   payment_account_id           BigInt                         
