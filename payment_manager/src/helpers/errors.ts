@@ -1,5 +1,3 @@
-import { ERROR400, ERROR404, ERROR500 } from "./constants"
-
 export class FastifyError extends Error {
   constructor(public replyCode, message) {
     super(message);
@@ -7,19 +5,19 @@ export class FastifyError extends Error {
 }
 
 export class InternalServerError extends FastifyError {
-  constructor(message = ERROR500.message) {
-    super(ERROR500.statusCode, message);
+  constructor(message = "INTERNAL_SERVER_ERROR") {
+    super(500, message);
   }
 }
 
 export class NotFoundError extends FastifyError {
-  constructor(message = ERROR404.message) {
-    super(ERROR404.statusCode, message);
+  constructor(message = "NOT_FOUND") {
+    super(404, message);
   }
 }
 
 export class BadRequestError extends FastifyError {
-  constructor(message = ERROR400.message) {
-    super(ERROR400.statusCode, message);
+  constructor(message = "BAD_REQUEST") {
+    super(400, message);
   }
 }

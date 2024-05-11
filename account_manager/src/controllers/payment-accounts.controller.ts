@@ -1,7 +1,7 @@
 import { FastifyReply } from 'fastify'
 import { prisma } from '../helpers/utils'
 import { BadRequestError, NotFoundError } from '../helpers/errors'
-import { STANDARD, ERROR404 } from '../helpers/constants'
+import { STANDARD } from '../helpers/constants'
 import { ICreatePaymentAccount, IListQuery, IPaymentAccount } from 'interfaces/payment-accounts'
 import validateCurrencyCode from 'validate-currency-code';
 
@@ -169,12 +169,6 @@ export const deletePaymentAccount = async (request: IPaymentAccount, reply: Fast
   const id = request.params.id;
 
   const pa = await getPaById(userId, id);
-  if (!pa) {
-    reply.code(ERROR404.statusCode).send({
-      code: ERROR404.statusCode,
-      message: ERROR404.message
-    })
-  }
 
   await prisma.payment_accounts.delete({
     where: {

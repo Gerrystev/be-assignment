@@ -9,7 +9,6 @@ import userRouter from './routes/user.router'
 import loadConfig, { apiDomain } from './config'
 import fastifyListRoutes from 'fastify-list-routes';
 import { FastifyError } from './helpers/errors';
-import { ERROR500 } from 'helpers/constants';
 
 loadConfig()
 
