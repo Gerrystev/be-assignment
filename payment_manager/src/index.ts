@@ -49,7 +49,7 @@ const startServer = async () => {
       }
     })
     server.register(cors, {
-        origin: apiDomain,
+        origin: '*',
         allowedHeaders: ['Content-Type', ...supertokens.getAllCORSHeaders()],
         credentials: true,
     });
