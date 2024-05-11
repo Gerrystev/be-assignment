@@ -66,7 +66,7 @@ const startServer = async () => {
       }
     }
     
-    await server.listen({ port })
+    await server.listen({ host: "0.0.0.0", port })
   } catch (e) {
     console.error(e)
   }

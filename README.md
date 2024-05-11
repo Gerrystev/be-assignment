@@ -70,10 +70,5 @@ Make sure to have docker and docker-compose installed
    ```
 2. Run docker compose file
    ```
-   docker compose up --build
+   docker compose up
    ```
-3. Run following command to migrate the schema
-   ```
-   npm run db:migrate
-   ``` 
-4. Create `supertokens` and `concrete_ai` databases in postgresql `db` container

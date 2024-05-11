@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=concrete_ai_test
+      - POSTGRES_DB=concrete_ai
     healthcheck:
       test: ['CMD', 'pg_isready', '-U', 'postgres', '-d', 'postgres']
       interval: 5s
@@ -18,12 +18,13 @@ services:
       retries: 5
   db_migration:
     build: ./db_migrate
-    network_mode: "host"
+    networks:
+      - app_network
     depends_on:
       db:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/concrete_ai_test
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/concrete_ai
   supertokens:
     image: registry.supertokens.io/supertokens/supertokens-postgresql:9.0.2
     depends_on:
@@ -34,7 +35,7 @@ services:
     ports:
       - 3567:3567
     environment:
-      POSTGRESQL_CONNECTION_URI: "postgresql://postgres:postgres@db:5432/concrete_ai_test"
+      POSTGRESQL_CONNECTION_URI: "postgresql://postgres:postgres@db:5432/concrete_ai"
       POSTGRESQL_TABLE_SCHEMA: "auth"
     networks:
       - app_network
@@ -47,7 +48,8 @@ services:
       retries: 5
   account_manager:
     build: ./account_manager
-    network_mode: "host"
+    networks:
+      - app_network
     depends_on:
       db:
         condition: service_healthy
@@ -59,16 +61,17 @@ services:
       - 8080:8080
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/concrete_ai_test
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/concrete_ai
       - API_DOMAIN=http://0.0.0.0:8080
       - API_PORT=8080
-      - SUPERTOKENS_CORE_URI=http://0.0.0.0:3567
+      - SUPERTOKENS_CORE_URI=http://supertokens:3567
       - SUPERTOKENS_APP_NAME=account_manager
     volumes:
       - ./prisma:/usr/src/app/prisma
   payment_manager:
     build: ./payment_manager
-    network_mode: "host"
+    networks:
+      - app_network
     depends_on:
       db:
         condition: service_healthy
@@ -77,13 +80,13 @@ services:
       supertokens:
         condition: service_started
     ports:
-      - 8081:8081
+      - 8081:8080
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://postgres:postgres@0.0.0.0:5432/concrete_ai_test
-      - API_DOMAIN=http://0.0.0.0:8081
-      - API_PORT=8081
-      - SUPERTOKENS_CORE_URI=http://0.0.0.0:3567
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/concrete_ai
+      - API_DOMAIN=http://0.0.0.0:8080
+      - API_PORT=8080
+      - SUPERTOKENS_CORE_URI=http://supertokens:3567
       - SUPERTOKENS_APP_NAME=payment_manager
     volumes:
       - ./prisma:/usr/src/app/prisma
