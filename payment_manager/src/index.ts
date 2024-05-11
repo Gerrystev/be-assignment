@@ -2,7 +2,7 @@ import { utils } from './helpers/utils';
 import fastify from 'fastify';
 import cors from "@fastify/cors";
 import supertokens from "supertokens-node";
-import { plugin, errorHandler } from "supertokens-node/framework/fastify";
+import { errorHandler } from "supertokens-node/framework/fastify";
 import formDataPlugin from "@fastify/formbody";
 import pino from 'pino';
 import transactionRouter from './routes/transactions.router'
@@ -21,7 +21,6 @@ const startServer = async () => {
     })
     await server.register(fastifyListRoutes, { colors: true });
     await server.register(formDataPlugin);
-    await server.register(plugin);
     
     server.setErrorHandler(errorHandler());
     

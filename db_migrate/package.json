@@ -1,0 +1,17 @@
+{
+  "name": "be-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "db:studio": "npx prisma studio",
+    "db:migrate": "npx prisma migrate deploy"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prisma": "^5.13.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.13.0"
+  }
+}

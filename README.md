@@ -57,13 +57,23 @@ Features:
 - Using `docker-compose` or any automation script to run the app with single command is a plus.
 
 ## Setup:
+Make sure to have docker and docker-compose installed
+
 1. Set your `DATABASE_URL` env variable at `.env`
-2. Run following command to migrate the schema
+2. Run setup script
+   ```
+   # To run setup
+   npm run setup
+
+   # To run with priviledge
+   npm run setup:sudo
+   ```
+2. Run docker compose file
+   ```
+   docker compose up --build
+   ```
+3. Run following command to migrate the schema
    ```
    npm run db:migrate
    ``` 
-3. Run docker compose file
-   ```
-   docker compose up
-   ```
 4. Create `supertokens` and `concrete_ai` databases in postgresql `db` container
