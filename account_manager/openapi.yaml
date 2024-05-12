@@ -24,7 +24,7 @@ paths:
             Date:
               schema:
                 type: string
-                example: Sat, 11 May 2024 07:51:43 GMT
+                example: Sun, 12 May 2024 06:57:10 GMT
             Keep-Alive:
               schema:
                 type: string
@@ -36,11 +36,25 @@ paths:
             access-control-allow-origin:
               schema:
                 type: string
-                example: http://localhost:8080
+                example: '*'
+            access-control-expose-headers:
+              schema:
+                type: string
+                example: front-token, st-access-token
             content-length:
               schema:
                 type: string
-                example: '1024'
+                example: '1419'
+            front-token:
+              schema:
+                type: string
+                example: >-
+                  eyJ1aWQiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJhdGUiOjE3MTU1MDA2MzAwMDAsInVwIjp7ImlhdCI6MTcxNTQ5NzAzMCwiZXhwIjoxNzE1NTAwNjMwLCJzdWIiOiJmY2U4ZDg2YS01MmM2LTQzNDAtYmQ4Zi1jNjlkMTBmNjM2M2QiLCJ0SWQiOiJwdWJsaWMiLCJyc3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwic2Vzc2lvbkhhbmRsZSI6Ijg2ZDIzOWEzLTE4NTctNDRiYy1hMzNjLWM3ZjViODcwMzI1MCIsInJlZnJlc2hUb2tlbkhhc2gxIjoiYzg3MzA3YjkzMThkNzhlOTA4ZGNlYjdiZWMzNmMwOWRkZWMyYzRlMTFmZmQ0NzFjMTA1YmQ5ZTYwZTAxZmJlNSIsInBhcmVudFJlZnJlc2hUb2tlbkhhc2gxIjpudWxsLCJhbnRpQ3NyZlRva2VuIjpudWxsLCJpc3MiOiJodHRwOi8vMC4wLjAuMDo4MDgwL2FwaSJ9fQ==
+            st-access-token:
+              schema:
+                type: string
+                example: >-
+                  eyJraWQiOiJkLTE3MTU0MDc0OTM4NTEiLCJ0eXAiOiJKV1QiLCJ2ZXJzaW9uIjoiNSIsImFsZyI6IlJTMjU2In0.eyJpYXQiOjE3MTU0OTcwMzAsImV4cCI6MTcxNTUwMDYzMCwic3ViIjoiZmNlOGQ4NmEtNTJjNi00MzQwLWJkOGYtYzY5ZDEwZjYzNjNkIiwidElkIjoicHVibGljIiwicnN1YiI6ImZjZThkODZhLTUyYzYtNDM0MC1iZDhmLWM2OWQxMGY2MzYzZCIsInNlc3Npb25IYW5kbGUiOiI4NmQyMzlhMy0xODU3LTQ0YmMtYTMzYy1jN2Y1Yjg3MDMyNTAiLCJyZWZyZXNoVG9rZW5IYXNoMSI6ImM4NzMwN2I5MzE4ZDc4ZTkwOGRjZWI3YmVjMzZjMDlkZGVjMmM0ZTExZmZkNDcxYzEwNWJkOWU2MGUwMWZiZTUiLCJwYXJlbnRSZWZyZXNoVG9rZW5IYXNoMSI6bnVsbCwiYW50aUNzcmZUb2tlbiI6bnVsbCwiaXNzIjoiaHR0cDovLzAuMC4wLjA6ODA4MC9hcGkifQ.RJX9RTl4tYEAS_InXDLwOHdZHk8hVsxsqqSqmhG0Omgwk7X-F42db__dckCZfJlDM1vavNv1N9P1x2k6Hpp4PRdBLcSUnp-BKnlkSoVJOyJYDg1xwVX-epvbz9efAv0h-AFUir0i3VCgldF0Qp-yEJSE0x4P27pRUBpECDX4w8nvCuMPgI_fm_wG65Lt0rRt5ScEgQAyOvnEgIT-boxhdSHJ-U2WnxgehupP5SiUjXnqoPaK_S6GFTy4BeiLBwfvbx5uSUl1mmgNoU5TAEdhRQ-QnBET5c_PZe_ugMbtCwxSXBvwooaemwc8ZVEgyDMr5H1sZa8aD9i7LYa7ZE5xJw
           content:
             application/json:
               schema:
@@ -53,26 +67,107 @@ paths:
                     type: object
                     properties:
                       '1715407506':
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            amount:
-                              type: number
-                              example: 1000
-                            currency:
-                              type: string
-                              example: JPY
-                            id:
-                              type: string
-                              example: '1715407798'
-                            status:
-                              type: string
-                              example: success
-                            timestamp:
-                              type: string
-                              example: '2024-05-11T06:09:58.297Z'
-                        example:
+                        type: object
+                        properties:
+                          amount:
+                            type: string
+                            example: '7257.85'
+                          currency:
+                            type: string
+                            example: JPY
+                          transactions:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                amount:
+                                  type: number
+                                  example: 1000
+                                currency:
+                                  type: string
+                                  example: JPY
+                                id:
+                                  type: string
+                                  example: '1715407798'
+                                status:
+                                  type: string
+                                  example: success
+                                timestamp:
+                                  type: string
+                                  example: '2024-05-11T06:09:58.297Z'
+                            example:
+                              - amount: 1000
+                                currency: JPY
+                                id: '1715407798'
+                                status: success
+                                timestamp: '2024-05-11T06:09:58.297Z'
+                              - amount: 1000
+                                currency: JPY
+                                id: '1715407812'
+                                status: success
+                                timestamp: '2024-05-11T06:10:11.536Z'
+                              - amount: 1000
+                                currency: JPY
+                                id: '1715407856'
+                                status: success
+                                timestamp: '2024-05-11T06:10:55.595Z'
+                              - amount: 1000
+                                currency: JPY
+                                id: '1715407879'
+                                status: success
+                                timestamp: '2024-05-11T06:11:18.621Z'
+                              - amount: 1000
+                                currency: JPY
+                                id: '1715407883'
+                                status: success
+                                timestamp: '2024-05-11T06:11:23.298Z'
+                              - amount: 1000
+                                currency: JPY
+                                id: '1715407903'
+                                status: success
+                                timestamp: '2024-05-11T06:11:43.395Z'
+                              - amount: 10
+                                currency: USD
+                                id: '1715407922'
+                                status: success
+                                timestamp: '2024-05-11T06:12:01.836Z'
+                              - amount: 100
+                                currency: JPY
+                                id: '1715407970'
+                                status: success
+                                timestamp: '2024-05-11T06:12:49.539Z'
+                              - amount: 100
+                                currency: JPY
+                                id: '1715408341'
+                                status: success
+                                timestamp: '2024-05-11T06:19:01.183Z'
+                              - amount: 10
+                                currency: USD
+                                id: '1715432416'
+                                status: success
+                                timestamp: '2024-05-11T13:00:16.415Z'
+                              - amount: 100
+                                currency: JPY
+                                id: '1715432437'
+                                status: success
+                                timestamp: '2024-05-11T13:00:36.578Z'
+                              - amount: 100
+                                currency: JPY
+                                id: '1715432446'
+                                status: success
+                                timestamp: '2024-05-11T13:00:45.795Z'
+                          type:
+                            type: string
+                            example: Debit JPY
+              examples:
+                List all transactions in user:
+                  value:
+                    message: Success
+                    result:
+                      '1715407506':
+                        amount: '7257.85'
+                        currency: JPY
+                        transactions:
                           - amount: 1000
                             currency: JPY
                             id: '1715407798'
@@ -118,57 +213,22 @@ paths:
                             id: '1715408341'
                             status: success
                             timestamp: '2024-05-11T06:19:01.183Z'
-              examples:
-                List all transactions in user:
-                  value:
-                    message: Success
-                    result:
-                      '1715407506':
-                        - amount: 1000
-                          currency: JPY
-                          id: '1715407798'
-                          status: success
-                          timestamp: '2024-05-11T06:09:58.297Z'
-                        - amount: 1000
-                          currency: JPY
-                          id: '1715407812'
-                          status: success
-                          timestamp: '2024-05-11T06:10:11.536Z'
-                        - amount: 1000
-                          currency: JPY
-                          id: '1715407856'
-                          status: success
-                          timestamp: '2024-05-11T06:10:55.595Z'
-                        - amount: 1000
-                          currency: JPY
-                          id: '1715407879'
-                          status: success
-                          timestamp: '2024-05-11T06:11:18.621Z'
-                        - amount: 1000
-                          currency: JPY
-                          id: '1715407883'
-                          status: success
-                          timestamp: '2024-05-11T06:11:23.298Z'
-                        - amount: 1000
-                          currency: JPY
-                          id: '1715407903'
-                          status: success
-                          timestamp: '2024-05-11T06:11:43.395Z'
-                        - amount: 10
-                          currency: USD
-                          id: '1715407922'
-                          status: success
-                          timestamp: '2024-05-11T06:12:01.836Z'
-                        - amount: 100
-                          currency: JPY
-                          id: '1715407970'
-                          status: success
-                          timestamp: '2024-05-11T06:12:49.539Z'
-                        - amount: 100
-                          currency: JPY
-                          id: '1715408341'
-                          status: success
-                          timestamp: '2024-05-11T06:19:01.183Z'
+                          - amount: 10
+                            currency: USD
+                            id: '1715432416'
+                            status: success
+                            timestamp: '2024-05-11T13:00:16.415Z'
+                          - amount: 100
+                            currency: JPY
+                            id: '1715432437'
+                            status: success
+                            timestamp: '2024-05-11T13:00:36.578Z'
+                          - amount: 100
+                            currency: JPY
+                            id: '1715432446'
+                            status: success
+                            timestamp: '2024-05-11T13:00:45.795Z'
+                        type: Debit JPY
       security:
         - accessTokenCookie: []
         - accessTokenBearer: []

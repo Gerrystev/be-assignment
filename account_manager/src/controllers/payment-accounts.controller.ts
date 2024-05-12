@@ -33,7 +33,7 @@ export const listTransactionsByUser = async (request: IListQuery, reply: Fastify
   let result = {};
   transactions.forEach(o => {
     const paymentAccountId = o.payment_account_id.toString();
-    const parsed = {
+    const transaction = {
       id: o.id.toString(),
       amount: o.amount.toNumber(),
       status: o.status,
@@ -41,9 +41,14 @@ export const listTransactionsByUser = async (request: IListQuery, reply: Fastify
       currency: o.currency
     };
     if (!result[paymentAccountId]) {
-      result[paymentAccountId] = [parsed];
+      result[paymentAccountId] = {
+        type: o.payment_account.type,
+        amount: o.payment_account.amount,
+        currency: o.payment_account.currency,
+        transactions: [transaction]
+      };
     } else {
-      result[paymentAccountId].push(parsed);
+      result[paymentAccountId]["transactions"].push(transaction);
     }
   })
   
